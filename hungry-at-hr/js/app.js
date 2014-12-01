@@ -1,4 +1,4 @@
-var 
+// REQUIRE UI ROUTER
 
 var app = angular.module('myApp', ['ui.router']);
 
