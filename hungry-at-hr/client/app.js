@@ -1,13 +1,9 @@
-// REQUIRE UI ROUTER
+var app = angular.module('hungry', ['ui.router'])
 
-var app = angular.module('myApp', ['ui.router']);
-
-// app.controller
-
-app.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1
-  $urlRouterProvider.otherwise("/state1");
+  $urlRouterProvider.otherwise("home");
   //
   // Now set up the states
   $stateProvider
@@ -26,5 +22,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('signup', {
       url: '/signup',
       templateUrl: 'views/signup.html'
+    })
+    .state('add-business', {
+      url: '/add-business',
+      templateUrl: 'views/add-business.html'
     })
 });

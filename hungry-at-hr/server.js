@@ -8,7 +8,7 @@ var mongoose       = require('mongoose');
 // configuration ===========================================
     
 // config files
-var db = require('./config/db');
+var db = require(__dirname + '/server/config/db');
 
 // set our port
 var port = process.env.PORT || 8080; 
@@ -31,10 +31,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
 // set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/client')); 
 
 // routes ==================================================
-require('./app/routes')(app); // configure our routes
+require(__dirname + '/client/routes')(app); // configure our routes
 
 // start app ===============================================
 // startup our app at http://localhost:8080
