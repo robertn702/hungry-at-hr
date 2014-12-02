@@ -1,6 +1,7 @@
 // grab the business model we just created
 
 var Business = require('../server/app/models/business');
+var Review = require('../server/app/models/review');
 
 module.exports = function(app) {
 
@@ -10,7 +11,7 @@ module.exports = function(app) {
     });
 
     // TO-DO: CHECK IF BUSINESS ALREADY EXISTS
-    app.post('/add-business', function(req, res) {
+    app.post('/business', function(req, res) {
         new Business({
             business_name: req.body.business_name,
             address: req.body.address,
@@ -20,25 +21,8 @@ module.exports = function(app) {
             if (err) {
                 throw err;
             } else {
-                console.log('success');
-                res.send(201);
-                res.redirect('/add-business');
-            }
-        });
-    });
-
-    app.post('/add-review', function(req, res) {
-        new Review({
-            business_name: req.body.business_name,
-            address: req.body.address,
-            lunch: Boolean(req.body.lunch),
-            dinner: Boolean(req.body.dinner)
-        }).save(function(err, business) {
-            if (err) {
-                throw err;
-            } else {
-                console.log('success');
-                res.send(201);
+                console.log('posted business');
+                // res.send(201);
                 // res.redirect('add-business');
             }
         });
@@ -50,19 +34,35 @@ module.exports = function(app) {
                 res.send(err);
             } else {
                 res.json(businesses);
+                // res.send(200);
             }
         });
     });
 
-    app.get('/one-business', function(req, res) {
-        // use mongoose to get all businesses in the database
-        Business.findOne({}, function(err, businesses) {
-            // if there is an error retrieving, send the error. 
-            // nothing after res.send(err) will execute
+    app.post('/review', function(req, res) {
+        new Review({
+            user_id: '',
+            business_id: req.body.business_id,
+            review_text: req.body.review,
+            stars: req.body.stars,
+            date: Date.now()
+        }).save(function(err, business) {
+            if (err) {
+                throw err;
+            } else {
+                console.log('posted review');
+                // res.send(201);
+            }
+        });
+    });
+
+    app.get('/review', function(req, res) {
+        Review.find(function(err, businesses) {
             if (err) {
                 res.send(err);
             } else {
-                res.json(businesses); // return all businesses in JSON format
+                res.json(businesses);
+                // res.send(200);
             }
         });
     });

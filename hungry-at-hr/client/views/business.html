@@ -1,8 +1,9 @@
-<div>
+<div ng-controller="BusinessController">
   <!-- displays selected business reviews -->
   <h2>{{businesses[index].business_name}}</h2>
-  <div>{{business[index].stars}}</div>
-  <form action="review" method="POST" id="review">
+  <!-- <h3>{{businesses[index]._id}}</h3> -->
+  <div>Stars: {{businesses[index].stars}}</div>
+  <form action="review" method="POST">
     <label>Stars (1-5)</label>
     <br>
     <input type="radio" name="stars" value="1">
@@ -13,15 +14,15 @@
     <br>
     <label>Review</label>
     <br>
-    <textarea name="text" form="review"></textarea>
+    <textarea name="review"></textarea>
     <br>
-    <input type="submit" value="Submit Review">
-    <input type="hidden" name="business_id" value={{business[index].__id}}></input>
+    <input type="hidden" name="business_id" value="{{businesses[index]._id}}"></input>
     <input type="hidden" name="user_id" value="">
-    <input type="hidden" name="date" value"">
+    <input type="hidden" name="date" value="">
+    <input type="submit" value="Submit Review">
     <br>
   </form>
   <ul>
-    <!-- <li ng-repeat="review in reviews"></li> -->
+    <li ng-repeat="review in reviews | filter:businesses[index]._id">{{review.review_text}}</li>
   </ul>
 </div>
