@@ -2,6 +2,7 @@
 
 var Business = require('../server/app/models/business');
 var Review = require('../server/app/models/review');
+var User = require('../server/app/models/user');
 
 module.exports = function(app) {
 
@@ -22,8 +23,7 @@ module.exports = function(app) {
                 throw err;
             } else {
                 console.log('posted business');
-                // res.send(201);
-                // res.redirect('add-business');
+                res.status(201);
             }
         });
     });
@@ -34,12 +34,13 @@ module.exports = function(app) {
                 res.send(err);
             } else {
                 res.json(businesses);
-                // res.send(200);
+                res.status(200);
             }
         });
     });
 
     app.post('/review', function(req, res) {
+        // add review
         new Review({
             user_id: '',
             business_id: req.body.business_id,
@@ -51,7 +52,13 @@ module.exports = function(app) {
                 throw err;
             } else {
                 console.log('posted review');
-                // res.send(201);
+                // update business data
+                Business.findByIdAndUpdate(
+                    req.body.business_id, 
+                    { $inc: { review_count: 1, stars: req.body.stars }}, 
+                    function(err, business) {
+                });
+                res.status(201);
             }
         });
     });
@@ -62,7 +69,7 @@ module.exports = function(app) {
                 res.send(err);
             } else {
                 res.json(businesses);
-                // res.send(200);
+                res.status(200);
             }
         });
     });
