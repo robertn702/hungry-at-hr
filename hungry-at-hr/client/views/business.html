@@ -1,10 +1,11 @@
 <div ng-controller="BusinessController">
   <!-- displays selected business reviews -->
   <h2>{{business_name}}</h2>
-  <div>Stars: {{averageStars}}</div>
-  <div>Reviews: {{review_count}}</div>
-  <br>
-
+  <h4>{{address}}</h4>
+  <span>Stars: {{averageStars}}</span>
+  <span>Reviews: {{review_count}}</span>
+  <br><br>
+  <h3>Add Your Review</h3>
   <form action="review" method="POST" name="reviewform">
     <label>Stars (1-5)</label>
     <br>
@@ -18,13 +19,13 @@
     <br>
     <textarea name="review" required></textarea>
     <br>
-    <input type="hidden" name="business_id" value="{{_id}}"></input>
+    <input type="hidden" name="business_id" value="{{_id}}" required></input>
     <input type="hidden" name="user_id" value="">
-    <input type="submit" value="Submit Review" ng-click="resetForm()">
+    <button type="submit" ng-click="resetForm()">Submit Review</button>
     <br>
   </form>
 
-  <h3>Reviews:</h3>
+  <h3>Reviews</h3>
   <!-- TO-DO: Include usernames -->
   <ul>
     <li ng-repeat="review in reviews | filter:_id | orderBy:date">{{review.review_text}}</li>

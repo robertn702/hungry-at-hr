@@ -1,8 +1,52 @@
-.restaurants {
-  /*float: left;*/
-  height: 100%;
+html, body { 
+  margin: 0px; 
+  padding: 0px; 
+  border: 0px; 
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  margin: 0; 
+  padding: 0; 
+  font-weight: normal; 
+  font-family: Arial, Helvetica, sans-serif; 
+}
+
+p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, textarea { 
+  margin: 0; 
+  padding: 0; 
+  font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif; 
 }
 
 .main {
-  /*background-color: red;*/
+  box-sizing: border-box;
+  width: 800px;
+  height: 100vh;
+  margin: 0px auto 0px auto;
+  background-color: orange;
+  overflow: auto;
+}
+
+.restaurants, .window {
+  box-sizing: border-box;
+  padding: 15px;
+  height: 500px;
+  display: inline-block;
+  float: left;
+}
+
+nav > ul {
+  display: inline;
+  background-color: red;
+}
+
+.restaurants {
+  /*padding: 10px 20px 10px 20px;*/
+  width: 200px;
+  background-color: lightblue;
+}
+
+.window {
+  /*padding: 10px 20px 10px 20px;*/
+  width: 600px;
+  background-color: green;
 }

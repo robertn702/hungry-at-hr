@@ -16,6 +16,7 @@ module.exports = function(app) {
         new Business({
             business_name: req.body.business_name,
             address: req.body.address,
+            phone: req.body.phone,
             stars: 0,
             lunch: Boolean(req.body.lunch),
             dinner: Boolean(req.body.dinner)
@@ -25,6 +26,7 @@ module.exports = function(app) {
             } else {
                 console.log('posted business');
                 // res.json(req.body);
+                res.redirect('/');
                 res.status(201);
             }
         });
@@ -61,7 +63,8 @@ module.exports = function(app) {
                     function(err, business) {
                     });
                 // res.json(req.body);
-                res.status(201).send();
+                res.redirect('/');
+                res.status(201);
             }
         });
     });

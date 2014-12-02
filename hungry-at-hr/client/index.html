@@ -5,24 +5,28 @@
 		<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	</head>
 	<body ng-controller="HomeController">
-		<div>
-			<h1>Hungry @ HR</h1>
+		<div class="main">
+			<header>
+				<h1>Hungry @ HR</h1>
+			</header>
 			<!-- <a ui-sref="map">Map</a> -->
-			<a ui-sref="signup">Sign Up</a>
-			<a ui-sref="signin">Sign In</a>
-			<a ui-sref="add-business">Add Business</a>
+			<nav class="nav">
+				<ul ui-sref="signup">Sign Up</ul>
+				<ul ui-sref="signin">Sign In</ul>
+				<ul ui-sref="add-business">Add Restaurant</ul>
+			</nav>
 
-			<div class="restaurants">
+			<aside class="restaurants">
 			  <h2>Restaurants</h2>
 			  <ul>
 			    <li ng-repeat="business in businesses">
-			      <div ui-sref="business" ng-click="setIndex($index)">{{business.business_name}}</div>
+			      <div ui-sref="business" ng-click="setIndex($index)">{{business.business_name}} ({{business.stars/business.review_count}})</div>
 			    </li>
 			  </ul>
-			</div>
+			</aside>
 
-			<div class="main" ui-view>
-			</div>
+			<section class="window" ui-view></section>
+			<footer></footer>
 		</div>
 
 		<script src="/libs/angular/angular.js"></script>

@@ -10,6 +10,7 @@ var businessSchema = new mongoose.Schema({
     stars: {type: Number, default: 0},
     review_count: {type: Number, default: 0},
     business_name: String,
+    phone: String,
     popularity: Number
 });
 
