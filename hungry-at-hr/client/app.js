@@ -1,5 +1,6 @@
 var app = angular.module('hungry', [
   'ngRoute',
+  'hungry.list',
   'ui.router'
 ])
 

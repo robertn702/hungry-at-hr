@@ -1,7 +1,7 @@
-<div>
+<div ng-controller="HomeController">
   <h2>Home</h2>
   <ul>
     <!-- will have list of restaurants here / may include filter option -->
-    <li></li>
+    <li ng-repeat="business in businesses">{{ business.business_name }}</li>
   </ul>
 </div>
