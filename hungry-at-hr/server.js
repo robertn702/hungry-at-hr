@@ -22,7 +22,7 @@ mongoose.connect(db.url);
 app.use(bodyParser.json()); 
 
 // parse application/vnd.api+json as json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+app.use(bodyParser.json({ type: 'application/json' })); 
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true })); 
@@ -41,7 +41,7 @@ require(__dirname + '/client/routes')(app); // configure our routes
 app.listen(port);               
 
 // shoutout to the user                     
-console.log('Magic happens on port ' + port);
+console.log('Hungry on port ' + port);
 
 // expose app           
 exports = module.exports = app;    

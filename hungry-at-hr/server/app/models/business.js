@@ -9,7 +9,8 @@ var businessSchema = new mongoose.Schema({
     longitude: {type: Number, default: 0},
     stars: {type: Number, default: 0},
     review_count: {type: Number, default: 0},
-    business_name: String
+    business_name: String,
+    popularity: Number
 });
 
 // define our nerd model

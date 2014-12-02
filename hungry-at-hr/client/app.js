@@ -1,4 +1,7 @@
-var app = angular.module('hungry', ['ui.router'])
+var app = angular.module('hungry', [
+  'ngRoute',
+  'ui.router'
+])
 
 .config(function($stateProvider, $urlRouterProvider) {
   //
