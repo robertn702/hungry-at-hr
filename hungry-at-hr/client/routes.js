@@ -16,6 +16,7 @@ module.exports = function(app) {
         new Business({
             business_name: req.body.business_name,
             address: req.body.address,
+            stars: 0,
             lunch: Boolean(req.body.lunch),
             dinner: Boolean(req.body.dinner)
         }).save(function(err, business) {
@@ -58,11 +59,9 @@ module.exports = function(app) {
                     req.body.business_id, 
                     { $inc: { review_count: 1, stars: req.body.stars }}, 
                     function(err, business) {
-                        if (err) throw err
-                    }
-                );
+                    });
                 // res.json(req.body);
-                res.status(201);
+                res.status(201).send();
             }
         });
     });
