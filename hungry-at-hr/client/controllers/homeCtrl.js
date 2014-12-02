@@ -14,5 +14,10 @@ angular.module('hungry.list', [])
 
   $scope.setIndex = function(idx) {
     $scope.index = idx;
+    $scope.stars = $scope.businesses[idx].stars;
+    $scope.review_count = $scope.businesses[idx].review_count;
+    $scope.business_name = $scope.businesses[idx].business_name;
+    $scope._id = $scope.businesses[idx]._id;
+    $scope.averageStars = $scope.stars / $scope.review_count;
   };
 });
