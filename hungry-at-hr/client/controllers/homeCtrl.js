@@ -11,4 +11,8 @@ angular.module('hungry.list', [])
       });
   };
   $scope.init();
+
+  $scope.setIndex = function(idx) {
+    $scope.index = idx;
+  };
 });

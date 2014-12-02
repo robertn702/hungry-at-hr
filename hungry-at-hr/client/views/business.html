@@ -1,4 +1,27 @@
 <div>
   <!-- displays selected business reviews -->
-  <h2>Business</h2>
+  <h2>{{businesses[index].business_name}}</h2>
+  <div>{{business[index].stars}}</div>
+  <form action="review" method="POST" id="review">
+    <label>Stars (1-5)</label>
+    <br>
+    <input type="radio" name="stars" value="1">
+    <input type="radio" name="stars" value="2">
+    <input type="radio" name="stars" value="3">
+    <input type="radio" name="stars" value="4">
+    <input type="radio" name="stars" value="5">
+    <br>
+    <label>Review</label>
+    <br>
+    <textarea name="text" form="review"></textarea>
+    <br>
+    <input type="submit" value="Submit Review">
+    <input type="hidden" name="business_id" value={{business[index].__id}}></input>
+    <input type="hidden" name="user_id" value="">
+    <input type="hidden" name="date" value"">
+    <br>
+  </form>
+  <ul>
+    <!-- <li ng-repeat="review in reviews"></li> -->
+  </ul>
 </div>

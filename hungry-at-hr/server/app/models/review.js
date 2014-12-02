@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 
 var reviewSchema = new mongoose.Schema({
-    review_id: String,
     user_id: String,
     business_id: String,
     votes: {type: Number, default: 0},
