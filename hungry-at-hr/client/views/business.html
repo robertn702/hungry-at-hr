@@ -1,7 +1,6 @@
 <div ng-controller="BusinessController">
   <!-- displays selected business reviews -->
   <h2>{{business_name}}</h2>
-  <!-- <h3>{{businesses[index]._id}}</h3> -->
   <div>Stars: {{averageStars}}</div>
   <div>Reviews: {{review_count}}</div>
   <br>
@@ -17,7 +16,10 @@
     <br>
     <label>Review</label>
     <br>
-    <textarea name="review" ng-model="textareaplaceholder" required></textarea>
+<<<<<<< HEAD
+=======
+    <textarea name="review" required></textarea>
+>>>>>>> required stars and text when submitting review
     <br>
     <input type="hidden" name="business_id" value="{{_id}}"></input>
     <input type="hidden" name="user_id" value="">
