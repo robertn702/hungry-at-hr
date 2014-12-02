@@ -23,6 +23,7 @@ module.exports = function(app) {
                 throw err;
             } else {
                 console.log('posted business');
+                // res.json(req.body);
                 res.status(201);
             }
         });
@@ -31,7 +32,7 @@ module.exports = function(app) {
     app.get('/business', function(req, res) {
         Business.find(function(err, businesses) {
             if (err) {
-                res.send(err);
+                throw (err);
             } else {
                 res.json(businesses);
                 res.status(200);
@@ -57,7 +58,10 @@ module.exports = function(app) {
                     req.body.business_id, 
                     { $inc: { review_count: 1, stars: req.body.stars }}, 
                     function(err, business) {
-                });
+                        if (err) throw err
+                    }
+                );
+                // res.json(req.body);
                 res.status(201);
             }
         });
@@ -66,7 +70,7 @@ module.exports = function(app) {
     app.get('/review', function(req, res) {
         Review.find(function(err, businesses) {
             if (err) {
-                res.send(err);
+                throw (err);
             } else {
                 res.json(businesses);
                 res.status(200);
@@ -74,6 +78,3 @@ module.exports = function(app) {
         });
     });
 }
-
-// route to handle creating goes here (app.post)
-// route to handle delete goes here (app.delete)

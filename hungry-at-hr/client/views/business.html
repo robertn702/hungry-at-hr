@@ -6,28 +6,28 @@
   <div>Reviews: {{review_count}}</div>
   <br>
 
-  <form action="review" method="POST">
+  <form action="review" method="POST" name="reviewform">
     <label>Stars (1-5)</label>
     <br>
-    <input type="radio" name="stars" value="1">
-    <input type="radio" name="stars" value="2">
-    <input type="radio" name="stars" value="3">
-    <input type="radio" name="stars" value="4">
-    <input type="radio" name="stars" value="5">
+    <input type="radio" name="stars" value="1" required>
+    <input type="radio" name="stars" value="2" required>
+    <input type="radio" name="stars" value="3" required>
+    <input type="radio" name="stars" value="4" required>
+    <input type="radio" name="stars" value="5" required>
     <br>
     <label>Review</label>
     <br>
-    <textarea name="review"></textarea>
+    <textarea name="review" ng-model="textareaplaceholder" required></textarea>
     <br>
     <input type="hidden" name="business_id" value="{{_id}}"></input>
     <input type="hidden" name="user_id" value="">
-    <input type="submit" value="Submit Review">
+    <input type="submit" value="Submit Review" ng-click="resetForm()">
     <br>
   </form>
 
   <h3>Reviews:</h3>
   <!-- TO-DO: Include usernames -->
   <ul>
-    <li ng-repeat="review in reviews | filter:_id">{{review.review_text}}</li>
+    <li ng-repeat="review in reviews | filter:_id | orderBy:date">{{review.review_text}}</li>
   </ul>
 </div>
