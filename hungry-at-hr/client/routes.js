@@ -23,7 +23,6 @@ module.exports = function(app, passport) {
             if (err) {
                 throw err;
             } else {
-                console.log('posted business');
                 // res.json(req.body);
                 res.redirect('/');
                 res.status(201);
@@ -44,6 +43,8 @@ module.exports = function(app, passport) {
 
     app.post('/review', function(req, res) {
         // add review
+        console.log('check if authenticated: ', req.isAuthenticated());
+        console.log('req.user object: ', req.user);
         new Review({
             user_id: '',
             business_id: req.body.business_id,
@@ -54,7 +55,6 @@ module.exports = function(app, passport) {
             if (err) {
                 throw err;
             } else {
-                console.log('posted review');
                 // update business data
                 Business.findByIdAndUpdate(
                     req.body.business_id, 
@@ -79,6 +79,7 @@ module.exports = function(app, passport) {
         });
     });
 
+    // // TO-DO: Implement Profile Page
     // // route for showing the profile page
     // app.get('/profile', isLoggedIn, function(req, res) {
     //     res.render('profile.ejs', {
@@ -92,13 +93,17 @@ module.exports = function(app, passport) {
     });
 
     app.get('/auth/github', passport.authenticate('github'));
-
-    app.get('/auth/github/callback', 
-      passport.authenticate('github', { failureRedirect: '/signin' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/');
-    });
+    
+    // the callback after github has authenticated the user
+    app.get('/auth/github/callback', passport.authenticate('github', { 
+        failureRedirect: '/signup',
+        successRedirect: '/'
+        }));
+      // function(req, res) {
+      //   console.log('successful authentication!');
+      //   // Successful authentication, redirect home.
+      //   res.redirect('/');
+    // });
 }
 
 function isLoggedIn(req, res, next) {

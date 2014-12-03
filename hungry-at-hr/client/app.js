@@ -16,18 +16,10 @@ var app = angular.module('hungry', [
       url: '/business',
       templateUrl: 'views/business.html'
     })
-    // .state('home', {
-    //   url: '/home',
-    //   templateUrl: 'views/home.html'
-    // })
     // .state('map', {
     //   url: '/map',
     //   templateUrl: 'views/map.html'
     // })
-    .state('signin', {
-      url: '/signin',
-      templateUrl: 'views/signin.html'
-    })
     .state('signup', {
       url: '/signup',
       templateUrl: 'views/signup.html'

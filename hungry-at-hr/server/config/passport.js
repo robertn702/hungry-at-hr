@@ -1,3 +1,5 @@
+// read this http://blog.revathskumar.com/2014/06/express-github-authentication-with-passport.html
+
 // config/passport.js
 
 // load all the things we need
@@ -27,17 +29,34 @@ module.exports = function(passport) {
     // GITHUB ==================================================================
     // =========================================================================
     
-    passport.use('github', new GitHubStrategy({
+    passport.use(new GitHubStrategy({
         clientID: configAuth.githubAuth.clientID,
         clientSecret: configAuth.githubAuth.clientSecret,
         callbackURL: configAuth.githubAuth.callbackURL
-      },
-      function(accessToken, refreshToken, profile, done) {
+    },
+    function(accessToken, refreshToken, profile, done) {
         process.nextTick(function() {
-            User.findOrCreate({ githubId: profile.id }, function (err, user) {
-              return done(err, user);
+            // console.log(profile);
+            User.findOne({_id: profile.id}, function(err, user) {
+                if (err) {
+                    console.log("err");
+                    return done(err);
+                } else if (user) {
+                    console.log("found user, logging in");
+                    return done(null, user);
+                } else {
+                    var newUser = new User();
+                    newUser._id = profile.id;
+                    newUser.username = profile.displayName;
+                    newUser.date = Date.now();
+                    newUser.save(function(err) {
+                        if (err) {
+                            throw err;
+                        }
+                        return done(null, newUser);
+                    });
+                }
             });
         });
-      }
-    ));
+    }));
 };

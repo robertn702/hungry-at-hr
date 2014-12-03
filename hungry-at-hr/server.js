@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
 require('./server/config/passport')(passport);
 app.use(passport.initialize());
