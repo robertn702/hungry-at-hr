@@ -27,10 +27,10 @@ module.exports = function(passport) {
     // GITHUB ==================================================================
     // =========================================================================
     
-    passport.use(new GitHubStrategy({
-        clientID        : configAuth.githubAuth.clientID,
-        clientSecret    : configAuth.githubAuth.clientSecret,
-        callbackURL     : configAuth.githubAuth.callbackURL
+    passport.use('github', new GitHubStrategy({
+        clientID: configAuth.githubAuth.clientID,
+        clientSecret: configAuth.githubAuth.clientSecret,
+        callbackURL: configAuth.githubAuth.callbackURL
       },
       function(accessToken, refreshToken, profile, done) {
         process.nextTick(function() {

@@ -3,10 +3,8 @@
 var Business = require('../server/app/models/business');
 var Review = require('../server/app/models/review');
 var User = require('../server/app/models/user');
-// var passport = require('passport');
 
 module.exports = function(app, passport) {
-
 // server routes ===========================================================
     app.get('/', function(req, res) {
         res.render(__dirname + '/index.html'); // load our client/index.html file
@@ -96,7 +94,7 @@ module.exports = function(app, passport) {
     app.get('/auth/github', passport.authenticate('github'));
 
     app.get('/auth/github/callback', 
-      passport.authenticate('github', { failureRedirect: '/login' }),
+      passport.authenticate('github', { failureRedirect: '/signin' }),
       function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/');
@@ -104,11 +102,10 @@ module.exports = function(app, passport) {
 }
 
 function isLoggedIn(req, res, next) {
-
     // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
+    if (req.isAuthenticated()) {
         return next();
-
+    }
     // if they aren't redirect them to the home page
     res.redirect('/');
 }
