@@ -39,6 +39,9 @@
   <h3>Reviews</h3>
   <!-- TO-DO: Include usernames -->
   <ul>
-    <li ng-repeat="review in reviews | filter:_id | orderBy:date">{{review.review_text}}</li>
+    <div ng-repeat="review in reviews | filter:_id | orderBy:date">
+      <div>{{review.username}}</div>
+      <div>{{review.review_text}}</div>
+    </div>
   </ul>
 </div>

@@ -46,7 +46,8 @@ module.exports = function(app, passport) {
         console.log('check if authenticated: ', req.isAuthenticated());
         console.log('req.user object: ', req.user);
         new Review({
-            user_id: '',
+            user_id: req.user._id,
+            username: req.user.username,
             business_id: req.body.business_id,
             review_text: req.body.review,
             stars: req.body.stars,
@@ -60,6 +61,12 @@ module.exports = function(app, passport) {
                     req.body.business_id, 
                     { $inc: { review_count: 1, stars: req.body.stars }}, 
                     function(err, business) {
+                    });
+
+                User.findByIdAndUpdate(
+                    req.user._id, 
+                    { $inc: { review_count: 1}}, 
+                    function(err, user) {
                     });
                 // res.json(req.body);
                 res.redirect('/');
