@@ -15,6 +15,7 @@ angular.module('hungry.list', [])
   $scope.setIndex = function(idx) {
     $scope.index = idx;
     $scope.stars = $scope.businesses[idx].stars;
+    $scope.phone = $scope.businesses[idx].phone;
     $scope.address = $scope.businesses[idx].address;
     $scope.review_count = $scope.businesses[idx].review_count;
     $scope.business_name = $scope.businesses[idx].business_name;

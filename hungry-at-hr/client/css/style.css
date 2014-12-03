@@ -29,14 +29,9 @@ p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, t
 .restaurants, .window {
   box-sizing: border-box;
   padding: 15px;
-  height: 500px;
+  height: 85vh;
   display: inline-block;
   float: left;
-}
-
-nav > ul {
-  display: inline;
-  background-color: red;
 }
 
 .restaurants {
@@ -49,4 +44,35 @@ nav > ul {
   /*padding: 10px 20px 10px 20px;*/
   width: 600px;
   background-color: green;
+}
+
+.reviewhead {
+  box-sizing: border-box;
+  width: 570px;
+  overflow: auto;
+  /*background-color: navy;*/
+}
+
+.businessinfo {
+  box-sizing: border-box;
+  /*background-color: cyan;*/
+  width: 470px;
+  float: left;
+}
+
+.overview {
+  box-sizing: border-box;
+  /*background-color: magenta;*/
+  width: 100px;
+  float: left;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+nav > ul {
+  margin: 0;
+  display: inline;
+  background-color: red;
 }
