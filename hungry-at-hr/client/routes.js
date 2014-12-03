@@ -4,7 +4,7 @@ var Business = require('../server/app/models/business');
 var Review = require('../server/app/models/review');
 var User = require('../server/app/models/user');
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
 
 // server routes ===========================================================
     app.get('/', function(req, res) {
@@ -79,4 +79,28 @@ module.exports = function(app) {
             }
         });
     });
+
+    // app.get('/logout', function(req, res) {
+    //     req.logout();
+    //     res.redirect('/');
+    // });
+
+    // app.get('/auth/github', passport.authenticate('github'));
+
+    // app.get('/auth/github/callback', 
+    //   passport.authenticate('github', { failureRedirect: '/login' }),
+    //   function(req, res) {
+    //     // Successful authentication, redirect home.
+    //     res.redirect('/');
+    // });
+}
+
+function isLoggedIn(req, res, next) {
+
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+    res.redirect('/');
 }

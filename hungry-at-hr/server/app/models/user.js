@@ -2,9 +2,10 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
+    username: String,
+    token: String,
     votes: {type: Number, default: 0},
     review_count: {type: Number, default: 0},
-    username: String,
     password: String
 });
 

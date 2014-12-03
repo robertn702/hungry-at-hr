@@ -4,6 +4,9 @@ var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose       = require('mongoose');
+var passport       = require('passport');
+var session        = require('express-session')
+var cookieParser   = require('cookie-parser')
 
 // configuration ===========================================
     
@@ -12,6 +15,16 @@ var db = require(__dirname + '/server/config/db');
 
 // set our port
 var port = process.env.PORT || 8080; 
+
+// authentication
+app.use(cookieParser());
+// app.use(session({
+//   secret: 'keyboard cat',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)

@@ -43,7 +43,7 @@ p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, t
 .window {
   /*padding: 10px 20px 10px 20px;*/
   width: 600px;
-  background-color: green;
+  background-color: lightgray;
 }
 
 .reviewhead {
@@ -74,5 +74,5 @@ ul {
 nav > ul {
   margin: 0;
   display: inline;
-  background-color: red;
+  /*background-color: red;*/
 }
