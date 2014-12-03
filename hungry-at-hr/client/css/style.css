@@ -40,6 +40,10 @@ p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, t
   background-color: lightblue;
 }
 
+.restaurants > li {
+  font-size: 8px;
+}
+
 .window {
   /*padding: 10px 20px 10px 20px;*/
   width: 600px;

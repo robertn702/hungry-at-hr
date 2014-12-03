@@ -30,11 +30,13 @@ module.exports = function(passport) {
     passport.use(new GitHubStrategy({
         clientID        : configAuth.githubAuth.clientID,
         clientSecret    : configAuth.githubAuth.clientSecret,
-        callbackURL     : configAuth.githubAuth.callbackURL,
+        callbackURL     : configAuth.githubAuth.callbackURL
       },
       function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ githubId: profile.id }, function (err, user) {
-          return done(err, user);
+        process.nextTick(function() {
+            User.findOrCreate({ githubId: profile.id }, function (err, user) {
+              return done(err, user);
+            });
         });
       }
     ));

@@ -3,6 +3,7 @@
 var Business = require('../server/app/models/business');
 var Review = require('../server/app/models/review');
 var User = require('../server/app/models/user');
+// var passport = require('passport');
 
 module.exports = function(app, passport) {
 
@@ -80,19 +81,26 @@ module.exports = function(app, passport) {
         });
     });
 
-    // app.get('/logout', function(req, res) {
-    //     req.logout();
-    //     res.redirect('/');
+    // // route for showing the profile page
+    // app.get('/profile', isLoggedIn, function(req, res) {
+    //     res.render('profile.ejs', {
+    //         user : req.user // get the user out of session and pass to template
+    //     });
     // });
 
-    // app.get('/auth/github', passport.authenticate('github'));
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
 
-    // app.get('/auth/github/callback', 
-    //   passport.authenticate('github', { failureRedirect: '/login' }),
-    //   function(req, res) {
-    //     // Successful authentication, redirect home.
-    //     res.redirect('/');
-    // });
+    app.get('/auth/github', passport.authenticate('github'));
+
+    app.get('/auth/github/callback', 
+      passport.authenticate('github', { failureRedirect: '/login' }),
+      function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
 }
 
 function isLoggedIn(req, res, next) {

@@ -20,7 +20,7 @@
 			  <h2>Restaurants</h2>
 			  <ul>
 			    <li ng-repeat="business in businesses">
-			      <div ui-sref="business" ng-click="setIndex($index)">{{business.business_name}} ({{business.stars/business.review_count}})</div>
+			      <div ui-sref="business" ng-click="setIndex($index)">{{business.business_name}} ({{(business.stars/business.review_count).toFixed(2)}})</div>
 			    </li>
 			  </ul>
 			</aside>

@@ -18,11 +18,11 @@ var port = process.env.PORT || 8080;
 
 // authentication
 app.use(cookieParser());
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true
-// }));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -47,7 +47,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/client')); 
 
 // routes ==================================================
-require(__dirname + '/client/routes')(app); // configure our routes
+require(__dirname + '/client/routes')(app, passport); // configure our routes
 
 // start app ===============================================
 // startup our app at http://localhost:8080
