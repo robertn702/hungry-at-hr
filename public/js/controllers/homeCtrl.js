@@ -1,4 +1,4 @@
-angular.module('hungry.list', [])
+angular.module('hungry.home', [])
 
 .controller('HomeController', function($scope, $http) {
   $scope.init = function() {
@@ -12,8 +12,4 @@ angular.module('hungry.list', [])
   };
   $scope.init();
   $scope.searchItems = ['Eat', 'Drink', 'Study'];
-  $scope.map = {
-    center: { latitude: 37.783748, longitude: -122.409046 },
-    zoom: 14
-  };
 });

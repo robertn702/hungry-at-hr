@@ -72,7 +72,7 @@ select{
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     ),
-    url('../img/trolley.jpg');
+    url('../img/chinatown.jpg');
 
   background-position: center;
 
@@ -110,7 +110,7 @@ select{
   border-radius: 10px;
   background-color: white;
   /*opacity: .8;*/
-  width: 80%;
+  width: 75%;
   margin: 0px auto;
 }
 
@@ -133,9 +133,18 @@ aside {
   /*background-color:green;*/
 }
 
-.angular-google-map-container {
+.main .angular-google-map-container {
   border-radius: 10px;
   height: 400px;
+  width: 100%;
+  position: relative;
+  vertical-align: bottom;
+  display: block;
+}
+
+aside .angular-google-map-container {
+  border-radius: 10px;
+  height: 175px;
   width: 100%;
   position: relative;
   vertical-align: bottom;

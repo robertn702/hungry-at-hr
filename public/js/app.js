@@ -1,9 +1,11 @@
 var app = angular.module('hungry', [
-  'hungry.list',
+  'hungry.home',
   'hungry.business',
+  'hungry.add-business',
+  'hungry.search',
   'ui.router',
-  'angularify.semantic',
-  'uiGmapgoogle-maps'
+  'uiGmapgoogle-maps',
+  'ngAutocomplete'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -19,16 +21,19 @@ var app = angular.module('hungry', [
     .state('home.search', {
       url: '/search',
       templateUrl: 'views/home.search.html',
+      controller: 'SearchController',
       authenticate: false
     })
     .state('home.business', {
       url: '/business',
       templateUrl: 'views/home.business.html',
+      controller: 'BusinessController',
       authenticate: false
     })
     .state('home.add-business', {
       url: '/add-business',
       templateUrl: 'views/home.add-business.html',
+      controller: 'AddBusinessController',
       authenticate: false
     })
     .state('login', {
