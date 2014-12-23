@@ -6,3 +6,8 @@ TODO's:
 - fix address (check if length is 6 or 7 and adjust accordingly)
 - fix fit of google map
 - add locations to map
+- move refactor code from controlleres into factory
+  - default maps coordinates (@ hr)
+  - displaying the correct amount of stars
+- add weather top left?
+- add login

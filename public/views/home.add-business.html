@@ -2,14 +2,15 @@
 
   <section class="main">
     <div class="ui large icon input">
-      <input type="text" ng-autocomplete ng-model="business" options="inputOptions" details="details" placeholder="Add Restaurant...">
+      <input type="text" ng-autocomplete ng-model="business" options="inputOptions" details="details" placeholder="Add a place to {{searchItem.toLowerCase()}}...">
       <i class="search icon" ng-click="getData()"></i>
     </div>
-    <h1>{{details.name}}</h1>
-    <h3>{{address[0]}}</h3>
-    <h3>{{address[1]}}</h3>
-    <h3>{{details.formatted_phone_number}}</h3>
+    <h1>{{data.business_name}}</h1>
+    <h3>{{data.address[0]}}</h3>
+    <h3>{{data.address[1]}}</h3>
+    <h3>{{data.phone}}</h3>
     <div class="ui divider"></div>
+    <button class="ui button">Add {{data.business_name}}</button>
   </section>
 
   <aside>

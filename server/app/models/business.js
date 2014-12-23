@@ -16,7 +16,7 @@ var mongoose = require('mongoose');
 
 var businessSchema = new mongoose.Schema({
     google_id: Number,
-    filter: String,     // Eat, Drink, Study
+    filter: Array,     // Eat, Drink, Study
     address: Array,     // array of 2 strings
     hours: {
         lunch: Array,   // array of 5 booleans (true or false depending on day of week)

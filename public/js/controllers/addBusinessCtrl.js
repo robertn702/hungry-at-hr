@@ -28,9 +28,7 @@ angular.module('hungry.add-business', [])
     $scope.address = formatAddress($scope.details.address_components);
     $scope.hours = formatHours($scope.details.opening_hours.periods);
     $scope.data = formatData($scope.details);
-    console.log($scope.address);
-    console.log($scope.hours);
-    // console.log($scope.data);
+    console.log($scope.data);
   };
 
   var formatAddress = function(addressComps) {
@@ -60,18 +58,22 @@ angular.module('hungry.add-business', [])
       var dayClose = openClose[i].close.day;
       var openTime = parseInt(openClose[i].open.time, 10);
       var closeTime = parseInt(openClose[i].close.time, 10);
+
       // check if open for lunch
-      if (lunchStart >= openTime && lunchEnd <= closeTime) {
+      if (lunchStart >= openTime && (lunchEnd <= closeTime || dayOpen < dayClose)) {
         hours.lunch[dayOpen] = true;
       } else {
         hours.lunch[dayOpen] = false;
       }
       // check if open for dinner
-      if (dinnerStart >= openTime && dinnerEnd <= closeTime) {
+      if (dinnerStart >= openTime && (dinnerEnd <= closeTime || dayOpen < dayClose)) {
         hours.dinner[dayOpen] = true;
       } else {
         hours.dinner[dayOpen] = false;
       }
+
+      if (!hours.lunch[i]) { hours.lunch[i] = false; }
+      if (!hours.dinner[i]) { hours.dinner[i] = false; }
     }
     return hours;
   };
@@ -79,22 +81,19 @@ angular.module('hungry.add-business', [])
   var formatData = function(details) {
     return {
       google_id: details.place_id,
-      filter: String,               // Eat, Drink, Study
+      filter: [$scope.searchItem],               // Eat, Drink, Study
       address: $scope.address,      // array of 2 strings
-      hours: {
-          lunch: Array,             // array of 5 booleans (true or false depending on day of week)
-          dinner: Array
-      },
+      hours: $scope.hours,
       coordinates: {
           latitude: details.geometry.location.k,
           longitude: details.geometry.location.D
       },
       rating: details.rating,
-      price: details.price,
+      price: details.price_level,
       website: details.website,
       business_name: details.name,
-      phone: details.phone
+      phone: details.formatted_phone_number
     }
-  }
+  };
 
 });
