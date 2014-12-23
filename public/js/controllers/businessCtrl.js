@@ -1,7 +1,7 @@
 angular.module('hungry.business', [])
 
-.controller('BusinessController', function($scope, $http) {
-  $scope.init = function() {
+.controller('BusinessController', function($scope, $http, $stateParams) {
+  var init = function() {
     // $http.get('/review').
     //   success(function(data, status, headers, config) {
     //     $scope.reviews = data;
@@ -10,10 +10,30 @@ angular.module('hungry.business', [])
     //     console.error('error getting reviews');
     //   });
     // $scope.resetForm();
+    $scope.business_data = getBusiness($stateParams.google_id);
   };
-  $scope.init();
+
+  var getBusiness = function(id) {
+    for (var i = 0; i < $scope.data.length; i++) {
+      if ($scope.data[i].google_id === id) {
+        return $scope.data[i];
+      }
+    }
+  };
+
+  init();
+
+  $scope.marker = [{
+    id: 0,
+    latitude: $scope.business_data.coordinates.latitude,
+    longitude: $scope.business_data.coordinates.longitude
+  }];
+
   $scope.map = {
-    center: { latitude: 37.783748, longitude: -122.409046 },
+    center: {
+      latitude: $scope.business_data.coordinates.latitude,
+      longitude:  $scope.business_data.coordinates.longitude
+    },
     zoom: 14
   };
 });

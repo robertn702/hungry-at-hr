@@ -32,23 +32,6 @@ module.exports = function(app, passport) {
         res.status(201);
       }
     });
-
-    // new Business({
-    //     business_name: req.body.business_name,
-    //     address: req.body.address,
-    //     phone: req.body.phone,
-    //     stars: 0,
-    //     lunch: Boolean(req.body.lunch),
-    //     dinner: Boolean(req.body.dinner)
-    // }).save(function(err, business) {
-    //     if (err) {
-    //         throw err;
-    //     } else {
-    //         // res.json(req.body);
-    //         res.redirect('/');
-    //         res.status(201);
-    //     }
-    // });
   });
 
   app.get('/business', function(req, res) {

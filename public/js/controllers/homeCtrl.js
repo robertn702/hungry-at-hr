@@ -1,14 +1,19 @@
 angular.module('hungry.home', [])
 
 .controller('HomeController', function($scope, $http) {
+  var getData = function() {
+    $http.get('/business').
+      success(function(data, status, headers, config) {
+        $scope.data = data;
+        console.log($scope.data);
+      }).
+      error(function(data, status, headers, config) {
+        console.error('error getting data');
+      });
+  };
+
   $scope.init = function() {
-    // $http.get('/business').
-    //   success(function(data, status, headers, config) {
-    //     $scope.businesses = data;
-    //   }).
-    //   error(function(data, status, headers, config) {
-    //     console.error('error');
-    //   });
+    getData();
   };
   $scope.init();
   $scope.searchItems = ['Eat', 'Drink', 'Study'];

@@ -8,7 +8,7 @@ angular.module('hungry.add-business', [])
     };
   };
   $scope.init();
-  $scope.data = {};
+  $scope.business_data = {};
   $scope.address = [];
   $scope.inputOptions = {
     types: 'restaurant|cafe|bar',
@@ -17,7 +17,6 @@ angular.module('hungry.add-business', [])
   };
 
   $scope.getData = function() {
-    // console.log($scope.details);
     $scope.map = {
       center: {
         latitude: $scope.details.geometry.location.k,
@@ -26,12 +25,11 @@ angular.module('hungry.add-business', [])
     };
     $scope.address = formatAddress($scope.details.address_components);
     $scope.hours = formatHours($scope.details.opening_hours.periods);
-    $scope.data = formatData($scope.details);
-    // console.log($scope.data);
+    $scope.business_data = formatData($scope.details);
   };
 
   $scope.submitData = function() {
-    $http.post('/business', $scope.data).
+    $http.post('/business', $scope.business_data).
       success(function(data, status, headers, config) {
         console.log('success', data);
       }).
