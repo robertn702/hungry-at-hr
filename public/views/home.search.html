@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-  <section class="main">
+  <section class="main-map">
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
       <ui-gmap-markers models="markers" coords="'self'" icon="'icon'">
       </ui-gmap-markers>
@@ -13,7 +13,7 @@
       <i class="search icon"></i>
     </div>
     <ul>
-      <li ng-repeat="business in data">{{business.business_name}}</li>
+      <li ng-repeat="business in data" ui-sref="home.business({ google_id: business.google_id })">{{business.business_name}}</li>
     </ul>
 
     <p ui-sref="home.add-business"><i class="add circle icon"></i>

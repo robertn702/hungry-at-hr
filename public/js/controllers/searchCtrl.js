@@ -19,6 +19,8 @@ angular.module('hungry.search', [])
       });
   };
 
+  $scope.markerEvents = {};
+
   var init = function() {
     getData();
   };
