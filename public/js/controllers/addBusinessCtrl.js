@@ -1,6 +1,6 @@
 angular.module('hungry.add-business', [])
 
-.controller('AddBusinessController', function($scope) {
+.controller('AddBusinessController', function($scope, $http) {
   $scope.init = function() {
     $scope.map = {
       center: { latitude: 37.783748, longitude: -122.409046 },
@@ -17,18 +17,27 @@ angular.module('hungry.add-business', [])
   };
 
   $scope.getData = function() {
-    console.log($scope.details);
+    // console.log($scope.details);
     $scope.map = {
       center: {
         latitude: $scope.details.geometry.location.k,
         longitude: $scope.details.geometry.location.D
       }
     };
-
     $scope.address = formatAddress($scope.details.address_components);
     $scope.hours = formatHours($scope.details.opening_hours.periods);
     $scope.data = formatData($scope.details);
-    console.log($scope.data);
+    // console.log($scope.data);
+  };
+
+  $scope.submitData = function() {
+    $http.post('/business', $scope.data).
+      success(function(data, status, headers, config) {
+        console.log('success', data);
+      }).
+      error(function(data, status, headers, config) {
+        console.log('error', status);
+      });
   };
 
   var formatAddress = function(addressComps) {
@@ -81,7 +90,7 @@ angular.module('hungry.add-business', [])
   var formatData = function(details) {
     return {
       google_id: details.place_id,
-      filter: [$scope.searchItem],               // Eat, Drink, Study
+      filter: [$scope.searchItem],  // Eat, Drink, Study
       address: $scope.address,      // array of 2 strings
       hours: $scope.hours,
       coordinates: {

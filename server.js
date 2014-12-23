@@ -11,7 +11,7 @@ var cookieParser   = require('cookie-parser');
 // configuration ===========================================
 
 // config files
-var db = require(__dirname + '/server/config/db');
+var db = require(__dirname + '/config/db');
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -23,7 +23,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-require('./server/config/passport')(passport);
+require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 

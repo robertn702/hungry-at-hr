@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 // });
 
 var businessSchema = new mongoose.Schema({
-    google_id: Number,
+    google_id: String,
     filter: Array,     // Eat, Drink, Study
     address: Array,     // array of 2 strings
     hours: {
