@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hungry">
+	<head>
+		<meta charset="UTF-8">
+		<title>Hungry @ HR</title>
+
+		<link rel="stylesheet" type="text/css" href="/libs/semantic-ui/dist/semantic.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+	</head>
+	<body ng-controller="HomeController">
+		<div class="background-image"></div>
+		<div class="container">
+			<div ui-view></div>
+		</div>
+
+		<script src="/libs/jquery/dist/jquery.min.js"></script>
+		<script src="/libs/semantic-ui/dist/semantic.js"></script>
+		<!-- // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+		<script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>
+		<script src="/libs/angular/angular.js"></script>
+			<script src="/libs/angular-route/angular-route.js"></script>
+			<script src="/libs/angular-ui-router/release/angular-ui-router.js"></script>
+			<script src="/libs/angular-semantic-ui/dist/angular-semantic-ui-0.0.1.js"></script>
+		<script src='/libs/lodash/dist/lodash.min.js'></script>
+		<script src='/libs/angular-google-maps/dist/angular-google-maps.min.js'></script>
+		<script src="/js/controllers/homeCtrl.js"></script>
+		<script src="/js/controllers/businessCtrl.js"></script>
+		<script src="/js/app.js"></script>
+	</body>
+</html>

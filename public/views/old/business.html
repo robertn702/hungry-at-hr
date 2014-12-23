@@ -1,0 +1,45 @@
+<div>
+  <!-- displays selected business reviews -->
+  <div class="reviewhead">
+
+    <div class="businessinfo">
+      <h2>{{business_name}}</h2>
+      <h4>{{address}}</h4>
+      <h4>{{phone}}</h4>
+    </div>
+
+    <div class="overview">
+      <div>Stars: {{averageStars}}</div>
+      <div>Reviews: {{review_count}}</div>
+    </div>
+
+  </div>
+  <hr>
+  <h3>Add Review</h3>
+  <form action="review" method="POST" name="reviewform">
+    <label>Stars (1-5)</label>
+    <br>
+    <!-- <input type="radio" name="stars" value="0" required> -->
+    <input type="radio" name="stars" value="1" required>
+    <input type="radio" name="stars" value="2" required>
+    <input type="radio" name="stars" value="3" required>
+    <input type="radio" name="stars" value="4" required>
+    <input type="radio" name="stars" value="5" required>
+    <br>
+    <label>Review</label>
+    <br>
+    <textarea name="review" required></textarea>
+    <br>
+    <input type="hidden" name="business_id" value="{{_id}}" required></input>
+    <input type="hidden" name="user_id" value="">
+    <button type="submit" ng-click="resetForm()">Submit Review</button>
+    <br>
+  </form>
+  <hr>
+  <h3>Reviews</h3>
+  <ul>
+    <div ng-repeat="review in reviews | filter:_id | orderBy:date">
+      <div>{{review.username}}: {{review.review_text}}</div>
+    </div>
+  </ul>
+</div>

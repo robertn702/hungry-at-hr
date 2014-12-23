@@ -1,0 +1,17 @@
+{
+  "name": "starter-node-angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-ui-router": "~0.2.13",
+    "ngAutocomplete": "1.0.0",
+    "angular-google-maps": "~2.0.12",
+    "semantic-ui": "~1.3.2",
+    "angular-semantic": "*",
+    "angular-semantic-ui": "~0.0.1"
+  }
+}

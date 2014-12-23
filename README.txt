@@ -1,0 +1,11 @@
+TODO's:
+- check if user is authenticated before accessing pages
+  - do not allow user to post if they are not authenticated
+- implement profile page
+- allow users to modify business info
+- create categories for restaurants
+- implement map on homepage
+- do not display "business" page if nothing is selected
+- front-end
+- deploy
+- if user is logged in / change button to logout
