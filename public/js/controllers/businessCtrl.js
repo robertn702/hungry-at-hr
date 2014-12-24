@@ -34,6 +34,6 @@ angular.module('hungry.business', [])
       latitude: $scope.business_data.coordinates.latitude,
       longitude:  $scope.business_data.coordinates.longitude
     },
-    zoom: 14
+    zoom: 16
   };
 });

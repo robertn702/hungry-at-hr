@@ -1,5 +1,5 @@
 <header class="home">
-  <select dir="rtl" ng-init="searchItem = searchItems[0]" ng-model="searchItem" ng-options="objective for objective in searchItems"></select>
+  <select dir="rtl" ng-model="searchItem" ng-options="objective for objective in searchItems" ng-keypress="startSearch($event, searchItem)" autofocus></select>
   @ Hack Reactor
 </header>
 <div ui-view></div>

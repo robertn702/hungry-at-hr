@@ -19,7 +19,7 @@ var app = angular.module('hungry', [
       authenticate: false
     })
     .state('home.search', {
-      url: '/search',
+      url: '/search/:filterNum',
       templateUrl: 'views/home.search.html',
       controller: 'SearchController',
       authenticate: false

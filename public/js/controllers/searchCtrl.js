@@ -3,6 +3,8 @@ angular.module('hungry.search', [])
 .controller('SearchController', function($scope, $http, $stateParams) {
   $scope.markers = [];
   $scope.markerEvents = {};
+  $scope.searchItem = $scope.searchItems[$stateParams.filterNum];
+  console.log($scope.searchItem);
 
   var init = function() {
     for (var i = 0; i < $scope.data.length; i++) {
