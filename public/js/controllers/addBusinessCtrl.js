@@ -4,14 +4,14 @@ angular.module('hungry.add-business', [])
   $scope.business_data = {};
   $scope.address = [];
 
-  $scope.init = function() {
+  var init = function() {
     $scope.map = {
       center: { latitude: 37.783748, longitude: -122.409046 },
-      zoom: 14
+      zoom: 16
     };
   };
 
-  $scope.init();
+  init();
 
   $scope.inputOptions = {
     types: 'restaurant|cafe|bar',
@@ -20,12 +20,21 @@ angular.module('hungry.add-business', [])
   };
 
   $scope.getData = function() {
+    console.log('inside getData()');
+    console.log($scope.details);
     $scope.map = {
       center: {
         latitude: $scope.details.geometry.location.k,
         longitude: $scope.details.geometry.location.D
-      }
+      },
+      zoom: 16
     };
+    $scope.marker = [{
+      id: 0,
+      latitude: $scope.details.geometry.location.k,
+      longitude: $scope.details.geometry.location.D
+    }];
+
     $scope.address = formatAddress($scope.details.address_components);
     $scope.hours = formatHours($scope.details.opening_hours.periods);
     $scope.business_data = formatData($scope.details);
@@ -105,5 +114,4 @@ angular.module('hungry.add-business', [])
       phone: details.formatted_phone_number
     }
   };
-
 });

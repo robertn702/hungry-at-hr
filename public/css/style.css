@@ -127,16 +127,6 @@ select{
   margin: 0px auto;
 }
 
-.main {
-  box-sizing: border-box;
-  display: inline-block;
-  float: left;
-  height: 100%;
-  width: 70%;
-  padding: 25px;
-  /*background-color:red;*/
-}
-
 .main-map {
   box-sizing: border-box;
   display: inline-block;
@@ -145,12 +135,22 @@ select{
   width: 70%;
 }
 
+.main {
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  height: 100%;
+  width: 70%;
+  padding: 30px 15px 30px 40px;
+  /*background-color:red;*/
+}
+
 aside {
   box-sizing: border-box;
   display: inline-block;
   height: 100%;
   width: 30%;
-  padding: 25px;
+  padding: 30px 40px 30px 15px;
   /*background-color:green;*/
 }
 
@@ -166,7 +166,7 @@ aside {
 
 aside .angular-google-map-container {
   border-radius: 10px;
-  height: 175px;
+  height: 150px;
   width: 100%;
   position: relative;
   vertical-align: bottom;

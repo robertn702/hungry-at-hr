@@ -4,14 +4,21 @@ angular.module('hungry.home', [])
   $scope.searchItems = ['hungry', 'thirsty', 'studious'];
 
   var init = function() {
+    // sets up css for home screen
     if ($state.is('home')) {
       angular.element(document.querySelector('header.home')).addClass('home-header');
       angular.element(document.querySelector('.background-gradient')).addClass('background-gradient-home').removeClass('background-gradient');
     };
+
+    // gets business data
     getData();
-    setFilterValue();
+
+    // persists the filter value
+    $scope.searchItem = setFilterValue($scope.searchItems, $stateParams);
+    console.log($scope.searchItem);
   };
 
+  // makes http request to get array of businesses
   var getData = function() {
     $http.get('/business').
       success(function(data, status, headers, config) {
@@ -22,12 +29,12 @@ angular.module('hungry.home', [])
       });
   };
 
-  var setFilterValue = function() {
-    if ($stateParams.filterNum) {
-      $scope.searchItem = $scope.searchItems[$stateParams.filterNum];
-    } else {
-      $scope.searchItem = $scope.searchItems[0];
-    }
+  // persits the filter value
+  var setFilterValue = function(filtersArray, params) {
+    if (params.filterNum)
+      return filtersArray[params.filterNum];
+    else
+      return filtersArray[0];
   };
 
   init();

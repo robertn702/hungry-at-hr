@@ -14,7 +14,9 @@
   </section>
 
   <aside>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+      <ui-gmap-markers models="marker" coords="'self'" icon="'icon'"></ui-gmap-markers>
+    </ui-gmap-google-map>
     <ul>
       <li ng-repeat="hours in details.opening_hours.weekday_text">{{hours}}</li>
     </ul>

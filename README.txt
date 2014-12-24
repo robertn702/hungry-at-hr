@@ -4,14 +4,15 @@ TODO's:
 - deploy
 - if user is logged in / change button to logout
 - fix address (check if length is 6 or 7 and adjust accordingly)
-- fix fit of google map
 - fix autocomplete dropdown
-- add locations to map
 - add boundary to search (w/i 10 miles of HR)
 - move refactor code from controlleres into factory
   - default maps coordinates (@ hr)
   - displaying the correct amount of stars
 - add weather top left?
 - add login
-- disable add-business if business is already in DB
-- add "tags" field to business schema or "categories"
+- DB
+  - add "tags" field to business schema or "categories"
+  - disable add-business if business is already in DB
+  - dont allow users to submit blank business
+  -

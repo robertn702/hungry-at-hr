@@ -1,20 +1,13 @@
 <div>
   <h2>Write a Review</h2>
-  <h3>Rating
-  </h3>
-    <i class="empty star icon" ng-click="rating=1"></i>
-    <i class="empty star icon" ng-click="rating=2"></i>
-    <i class="empty star icon" ng-click="rating=3"></i>
-    <i class="empty star icon" ng-click="rating=4"></i>
-    <i class="empty star icon" ng-click="rating=5"></i>
-  <h3>Price
-  </h3>
-    <i class="dollar icon" ng-click="price=1"></i>
-    <i class="dollar icon" ng-click="price=2"></i>
-    <i class="dollar icon" ng-click="price=3"></i>
-    <i class="dollar icon" ng-click="price=4"></i>
-    <i class="dollar icon" ng-click="price=5"></i>
+  <h3>Rating</h3>
+  <i ng-class="emptyOrNot($index)" class="star icon" ng-repeat="rating in repeatXTimes(5) track by $index" ng-click="updateRating($index+1)"></i>
+
+  <h3>Price</h3>
+  <i ng-class="selectedOrNot($index)" class="dollar icon" ng-repeat="price in repeatXTimes(5) track by $index" ng-click="updatePrice($index+1)"></i>
+
   <h3>Your Review </h3>
   <textarea name="" id="" cols="" rows=""></textarea>
   <button class="ui button" ng-click="submitReview()">Submit Review</button>
+  <button class="ui button" ui-sref="home.business.reviews">Go Back</button>
 </div>

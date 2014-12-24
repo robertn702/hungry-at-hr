@@ -1,20 +1,27 @@
 angular.module('hungry.search', [])
 
 .controller('SearchController', function($scope, $state, $http, $stateParams) {
-  $scope.markers = [];
-  $scope.markerEvents = {};
+  // $scope.markerEvents = {};
 
   var init = function() {
-    for (var i = 0; i < $scope.data.length; i++) {
-      $scope.markers.push({
+    $scope.markers = getMarkers($scope.data);
+  };
+
+  // creates and returns array of business coordinates
+  var getMarkers = function(data) {
+    var markersArray = [];
+    for (var i = 0; i < data.length; i++) {
+      markersArray.push({
       id: i,
-      latitude: $scope.data[i].coordinates.latitude,
-      longitude: $scope.data[i].coordinates.longitude
+      latitude: data[i].coordinates.latitude,
+      longitude: data[i].coordinates.longitude
       });
     }
-    console.log($scope.markers);
+    return markersArray;
   };
+
   init();
+
 
   $scope.map = {
     center: { latitude: 37.783748, longitude: -122.409046 },
