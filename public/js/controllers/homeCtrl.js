@@ -1,13 +1,15 @@
 angular.module('hungry.home', [])
 
-.controller('HomeController', function($scope, $state, $http) {
+.controller('HomeController', function($scope, $state, $http, $stateParams) {
   $scope.searchItems = ['hungry', 'thirsty', 'studious'];
-  console.log('searchItem: ', $scope.searchItem);
-    angular.element(document.querySelector('header.home')).addClass('home-header');
-    angular.element(document.querySelector('.background-gradient')).addClass('background-gradient-home').removeClass('background-gradient');
 
-  $scope.init = function() {
+  var init = function() {
+    if ($state.is('home')) {
+      angular.element(document.querySelector('header.home')).addClass('home-header');
+      angular.element(document.querySelector('.background-gradient')).addClass('background-gradient-home').removeClass('background-gradient');
+    };
     getData();
+    setFilterValue();
   };
 
   var getData = function() {
@@ -20,7 +22,15 @@ angular.module('hungry.home', [])
       });
   };
 
-  $scope.init();
+  var setFilterValue = function() {
+    if ($stateParams.filterNum) {
+      $scope.searchItem = $scope.searchItems[$stateParams.filterNum];
+    } else {
+      $scope.searchItem = $scope.searchItems[0];
+    }
+  };
+
+  init();
 
   $scope.startSearch = function(keyEvent, filterName) {
     if (keyEvent.which === 13) {

@@ -25,7 +25,7 @@ var app = angular.module('hungry', [
       authenticate: false
     })
     .state('home.business', {
-      url: '/business/:google_id',
+      url: '/business/:filterNum/:google_id',
       templateUrl: 'views/home.business.html',
       controller: 'BusinessController',
       authenticate: false

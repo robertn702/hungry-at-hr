@@ -13,10 +13,8 @@
       <i class="search icon"></i>
     </div>
     <ul>
-      <li ng-repeat="business in data" ui-sref="home.business({ google_id: business.google_id })">{{business.business_name}}</li>
+      <li ng-repeat="business in data" ui-sref="home.business({ google_id: business.google_id, filterNum: searchItems.indexOf(searchItem) })">{{business.business_name}}</li>
     </ul>
-
-    <p ui-sref="home.add-business"><i class="add circle icon"></i>
-Add Restaurant</p>
+    <button ui-sref="home.add-business">Add Business</button>
   </aside>
 </div>
