@@ -3,6 +3,7 @@ var app = angular.module('hungry', [
   'hungry.business',
   'hungry.add-business',
   'hungry.search',
+  'hungry.write-review',
   'ui.router',
   'uiGmapgoogle-maps',
   'ngAutocomplete'
@@ -10,7 +11,7 @@ var app = angular.module('hungry', [
 
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('home');
-  // Now set up the states
+
   $stateProvider
     .state('home', {
       url: '/home',
@@ -39,7 +40,7 @@ var app = angular.module('hungry', [
         .state('home.business.write-review', {
           url: '/write-review',
           templateUrl: 'views/home.business.write-review.html',
-          // controller: 'writeReviewController',
+          controller: 'writeReviewController',
           authenticate: false
         })
       .state('home.add-business', {

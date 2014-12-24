@@ -157,7 +157,6 @@ aside {
 .main-map .angular-google-map-container {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  /*height: 400px;*/
   height: 80vh;
   width: 100%;
   position: relative;
@@ -175,7 +174,7 @@ aside .angular-google-map-container {
 }
 
 textarea {
-  width: 100%;
-  height: 200px;
+  width: 80%;
+  height: 20vh;
 }
 

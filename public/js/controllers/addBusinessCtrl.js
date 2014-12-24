@@ -1,15 +1,18 @@
 angular.module('hungry.add-business', [])
 
 .controller('AddBusinessController', function($scope, $http) {
+  $scope.business_data = {};
+  $scope.address = [];
+
   $scope.init = function() {
     $scope.map = {
       center: { latitude: 37.783748, longitude: -122.409046 },
       zoom: 14
     };
   };
+
   $scope.init();
-  $scope.business_data = {};
-  $scope.address = [];
+
   $scope.inputOptions = {
     types: 'restaurant|cafe|bar',
     country: 'us',

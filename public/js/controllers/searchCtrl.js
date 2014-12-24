@@ -12,8 +12,10 @@ angular.module('hungry.search', [])
       longitude: $scope.data[i].coordinates.longitude
       });
     }
+    console.log($scope.markers);
   };
   init();
+
   $scope.map = {
     center: { latitude: 37.783748, longitude: -122.409046 },
     zoom: 14
