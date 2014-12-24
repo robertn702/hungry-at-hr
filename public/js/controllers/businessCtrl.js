@@ -1,6 +1,6 @@
 angular.module('hungry.business', [])
 
-.controller('BusinessController', function($scope, $http, $stateParams) {
+.controller('BusinessController', function($scope, $http, $state, $stateParams) {
   var init = function() {
     // $http.get('/review').
     //   success(function(data, status, headers, config) {
@@ -11,6 +11,9 @@ angular.module('hungry.business', [])
     //   });
     // $scope.resetForm();
     $scope.business_data = getBusiness($stateParams.google_id);
+    if ($state.is('home.business')) {
+      $state.go('home.business.reviews');
+    }
   };
 
   var getBusiness = function(id) {

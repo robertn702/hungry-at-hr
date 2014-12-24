@@ -1,19 +1,6 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
 
-// var businessSchema = new mongoose.Schema({
-//     address: {type: String, default: ''},
-//     lunch: Boolean,
-//     dinner: Boolean,
-//     latitude: {type: Number, default: 0},
-//     longitude: {type: Number, default: 0},
-//     stars: {type: Number, default: 0},
-//     review_count: {type: Number, default: 0},
-//     business_name: String,
-//     phone: String,
-//     popularity: Number
-// });
-
 var businessSchema = new mongoose.Schema({
     google_id: String,
     filter: Array,     // Eat, Drink, Study
@@ -32,7 +19,8 @@ var businessSchema = new mongoose.Schema({
     review_count: {type: Number, default: 1},
     business_name: String,
     phone: String,
-    popularity: Number
+    popularity: Number,
+    tags: Array
 });
 
 module.exports = mongoose.model('Business', businessSchema);
