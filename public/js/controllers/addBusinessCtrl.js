@@ -3,41 +3,50 @@ angular.module('hungry.add-business', [])
 .controller('AddBusinessController', function($scope, $http) {
   $scope.business_data = {};
   $scope.address = [];
-
-  var init = function() {
-    $scope.map = {
-      center: { latitude: 37.783748, longitude: -122.409046 },
-      zoom: 16
-    };
-  };
-
-  init();
-
   $scope.inputOptions = {
     types: 'restaurant|cafe|bar',
     country: 'us',
     watchEnter: true
   };
 
-  $scope.getData = function() {
-    console.log('inside getData()');
-    console.log($scope.details);
+  // TODO: do I need this here?
+  $scope.map = {
+    center: { latitude: 37.783748, longitude: -122.409046 },
+    zoom: 16
+  };
+
+  var init = function() {
+  };
+
+  init();
+
+  $scope.getData = function(details) {
     $scope.map = {
       center: {
-        latitude: $scope.details.geometry.location.k,
-        longitude: $scope.details.geometry.location.D
+        latitude: details.geometry.location.k,
+        longitude: details.geometry.location.D
       },
       zoom: 16
     };
     $scope.marker = [{
       id: 0,
-      latitude: $scope.details.geometry.location.k,
-      longitude: $scope.details.geometry.location.D
+      latitude: details.geometry.location.k,
+      longitude: details.geometry.location.D
     }];
 
-    $scope.address = formatAddress($scope.details.address_components);
-    $scope.hours = formatHours($scope.details.opening_hours.periods);
-    $scope.business_data = formatData($scope.details);
+    $scope.address = formatAddress(details.address_components);
+    $scope.hours = formatHours(details.opening_hours.periods);
+    $scope.business_data = formatData(details);
+    console.log('isDuplicate: ', isDuplicate(details.place_id));
+    $scope.disable = isDuplicate(details.place_id);
+  };
+
+  // checks if business is a duplicate
+  var isDuplicate = function(googleId) {
+    for (var i = 0; i < $scope.data.length; i++) {
+      if ($scope.data[i].google_id === googleId) return true;
+    }
+    return false;
   };
 
   $scope.submitData = function() {

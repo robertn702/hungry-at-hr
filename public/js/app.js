@@ -5,6 +5,7 @@ var app = angular.module('hungry', [
   'hungry.search',
   'hungry.write-review',
   'ui.router',
+  'angularify.semantic',
   'uiGmapgoogle-maps',
   'ngAutocomplete'
 ])
@@ -49,9 +50,9 @@ var app = angular.module('hungry', [
         controller: 'AddBusinessController',
         authenticate: false
       })
-    .state('login', {
+    .state('home.login', {
       url: '/login',
-      templateUrl: 'views/login.html',
+      templateUrl: 'views/home.login.html',
       authenticate: false
     })
 });

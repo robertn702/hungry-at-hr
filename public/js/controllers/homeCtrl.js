@@ -3,19 +3,20 @@ angular.module('hungry.home', [])
 .controller('HomeController', function($scope, $state, $http, $stateParams) {
   $scope.searchItems = ['hungry', 'thirsty', 'studious'];
 
-  var init = function() {
+  var init = function($scope) {
     // sets up css for home screen
     if ($state.is('home')) {
       angular.element(document.querySelector('header.home')).addClass('home-header');
       angular.element(document.querySelector('.background-gradient')).addClass('background-gradient-home').removeClass('background-gradient');
     };
 
+    $scope.show_modal = false;
+
     // gets business data
     getData();
 
     // persists the filter value
     $scope.searchItem = setFilterValue($scope.searchItems, $stateParams);
-    console.log($scope.searchItem);
   };
 
   // makes http request to get array of businesses
@@ -37,7 +38,27 @@ angular.module('hungry.home', [])
       return filtersArray[0];
   };
 
-  init();
+  init($scope);
+
+////// MODAL
+  $scope.showModal = function() {
+    $scope.show_modal = true;
+  };
+
+  $scope.closeModal = function(){
+    $scope.show_modal = false;
+  };
+////// END MODAL
+
+  $scope.signIn = function() {
+    $http.get('/auth/github').
+      success(function(data, status, headers, config) {
+        console.log('data: ', data);
+      }).
+      error(function(data, status, headers, config) {
+        console.error('error getting data');
+      });
+  };
 
   $scope.startSearch = function(keyEvent, filterName) {
     if (keyEvent.which === 13) {

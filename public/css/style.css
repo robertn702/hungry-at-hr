@@ -32,7 +32,7 @@ p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, t
   font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif;
 }
 
-header {
+header, .header-icon {
   color: white;
 
   height: 80px;
@@ -176,5 +176,17 @@ aside .angular-google-map-container {
 textarea {
   width: 80%;
   height: 20vh;
+}
+
+.arrow, .call {
+  vertical-align: top;
+}
+
+modal {
+  display: inline-block;
+}
+
+.modal-content {
+  color: black;
 }
 

@@ -18,6 +18,7 @@ angular.module('hungry.write-review', [])
     $scope.price = price;
   };
 
+  // sets class for stars if selected
   $scope.emptyOrNot = function(index) {
     if (index + 1 > $scope.rating)
       return 'empty';
@@ -25,10 +26,15 @@ angular.module('hungry.write-review', [])
       return 'yellow';
   };
 
+  // sets class of $ signs if selected
   $scope.selectedOrNot = function(index) {
     if (index + 1 > $scope.price)
       return '';
     else
       return 'green';
+  };
+
+  $scope.submitReview = function() {
+
   };
 });

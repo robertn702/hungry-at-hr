@@ -3,11 +3,25 @@
   <section class="main">
     <div>
       <h1>{{business_data.business_name}}</h1>
-      <h3>{{business_data.address[0]}}</h3>
-      <h3>{{business_data.address[1]}}</h3>
-      <h3>{{business_data.phone}}</h3>
+      <div>
+        <span style="float:left;">
+          <i class="marker icon"></i>
+        </span>
+        <span style="display: inline-block;">
+          <h3>{{business_data.address[0]}}</h3>
+          <h3>{{business_data.address[1]}}</h3>
+        </span>
+      </div>
+      <div>
+        <span style="display: inline">
+          <i class="call icon"></i>
+        </span>
+        <span style="display: inline-block">
+          <h3>{{business_data.phone}}</h3>
+        </span>
+      </div>
     </div>
-    <button class="ui button" ui-sref="home.search">Map</button>
+    <button class="ui button" ui-sref="home.search">Back to Map</button>
     <div class="ui divider"></div>
 
     <div ui-view></div>
