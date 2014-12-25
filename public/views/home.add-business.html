@@ -14,7 +14,10 @@
       Back to Map
     </button>
     <div class="ui divider"></div>
-    <button ng-click="submitData()" ng-class="{disabled: disable}" class="ui button" ng-show="business_data.google_id">Add {{business_data.business_name}}</button>
+    <button ng-click="submitData()" ng-class="{disabled: disable}" class="ui labeled icon button" ng-show="business_data.google_id">
+      <i class="plus icon"></i>
+      Add {{business_data.business_name}}
+    </button>
   </section>
 
   <aside>

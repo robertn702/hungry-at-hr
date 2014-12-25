@@ -130,7 +130,7 @@ select{
 .wrapper {
   display: block;
   height: 80vh;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   /*opacity: .8;*/
   width: 70%;
@@ -161,12 +161,19 @@ aside {
   height: 100%;
   width: 30%;
   padding: 30px 40px 30px 15px;
+  /*overflow: scroll;*/
   /*background-color:green;*/
 }
 
+.business-list {
+  overflow: scroll;
+  height: 80%;
+  margin-bottom: 10px;
+}
+
 .main-map .angular-google-map-container {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   height: 80vh;
   width: 100%;
   position: relative;
@@ -175,7 +182,7 @@ aside {
 }
 
 aside .angular-google-map-container {
-  border-radius: 10px;
+  border-radius: 5px;
   height: 150px;
   width: 100%;
   position: relative;
