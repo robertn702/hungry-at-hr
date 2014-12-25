@@ -9,7 +9,10 @@
     <h3>{{business_data.address[0]}}</h3>
     <h3>{{business_data.address[1]}}</h3>
     <h3>{{business_data.phone}}</h3>
-    <button class="ui button" ui-sref="home.search">Back to Map</button>
+    <button class="ui labeled icon button" ui-sref="home.search">
+      <i class="map icon"></i>
+      Back to Map
+    </button>
     <div class="ui divider"></div>
     <button ng-click="submitData()" ng-class="{disabled: disable}" class="ui button" ng-show="business_data.google_id">Add {{business_data.business_name}}</button>
   </section>

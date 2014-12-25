@@ -42,13 +42,13 @@ var app = angular.module('hungry', [
           url: '/write-review',
           templateUrl: 'views/home.business.write-review.html',
           controller: 'writeReviewController',
-          authenticate: false
+          authenticate: true
         })
       .state('home.add-business', {
         url: '/add-business',
         templateUrl: 'views/home.add-business.html',
         controller: 'AddBusinessController',
-        authenticate: false
+        authenticate: true
       })
     .state('home.login', {
       url: '/login',

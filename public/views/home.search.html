@@ -14,6 +14,9 @@
     <ul>
       <li ng-repeat="business in data" ui-sref="home.business({ google_id: business.google_id, filterNum: searchItems.indexOf(searchItem) })">{{business.business_name}}</li>
     </ul>
-    <button class="ui button" ui-sref="home.add-business">Add Business</button>
+    <button class="ui labeled icon button" ui-sref="home.add-business">
+      <i class="plus icon"></i>
+      Add Business
+    </button>
   </aside>
 </div>
