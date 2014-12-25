@@ -1,11 +1,13 @@
-<header>
+<header class="home">
   <span style="display: inline-block">
-  <i class="left rain icon" ng-click="" style="font-size: 32px; margin-right: 40px"></i>
+  <i class="weather-icon left rain icon" ng-show="showHeaderIcons"></i>
   </span>
+
   <select dir="rtl" ng-model="searchItem" ng-options="objective for objective in searchItems" ng-keypress="startSearch($event, searchItem)" autofocus></select>
   <span>@ Hack Reactor</span>
+
   <span style="display: inline-block">
-  <i class="right sign in icon" ng-click="showModal()" style="font-size: 32px; margin-left: 40px"></i>
+  <i class="login-icon right sign in icon" ng-click="showModal()" ng-show="showHeaderIcons"></i>
   </span>
 
   <modal ng-model="show_modal">

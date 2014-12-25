@@ -37,7 +37,6 @@ angular.module('hungry.add-business', [])
     $scope.address = formatAddress(details.address_components);
     $scope.hours = formatHours(details.opening_hours.periods);
     $scope.business_data = formatData(details);
-    console.log('isDuplicate: ', isDuplicate(details.place_id));
     $scope.disable = isDuplicate(details.place_id);
   };
 

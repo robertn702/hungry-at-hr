@@ -2,12 +2,14 @@ angular.module('hungry.home', [])
 
 .controller('HomeController', function($scope, $state, $http, $stateParams) {
   $scope.searchItems = ['hungry', 'thirsty', 'studious'];
+  $scope.showHeaderIcons = true;
 
   var init = function($scope) {
     // sets up css for home screen
     if ($state.is('home')) {
       angular.element(document.querySelector('header.home')).addClass('home-header');
       angular.element(document.querySelector('.background-gradient')).addClass('background-gradient-home').removeClass('background-gradient');
+      $scope.showHeaderIcons = false;
     };
 
     $scope.show_modal = false;
@@ -50,17 +52,8 @@ angular.module('hungry.home', [])
   };
 ////// END MODAL
 
-  $scope.signIn = function() {
-    $http.get('/auth/github').
-      success(function(data, status, headers, config) {
-        console.log('data: ', data);
-      }).
-      error(function(data, status, headers, config) {
-        console.error('error getting data');
-      });
-  };
-
   $scope.startSearch = function(keyEvent, filterName) {
+    $scope.showHeaderIcons = true;
     if (keyEvent.which === 13) {
       $state.go('home.search', { filterNum: $scope.searchItems.indexOf(filterName) });
       angular.element(document.querySelector('header.home')).removeClass('home-header');

@@ -32,7 +32,7 @@ p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, t
   font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif;
 }
 
-header, .header-icon {
+header {
   color: white;
 
   height: 80px;
@@ -48,6 +48,16 @@ header, .header-icon {
 .home-header {
   height: 80vh;
   line-height: 80vh;
+}
+
+.weather-icon {
+  font-size: 32px;
+  margin-right: 40px;
+}
+
+.login-icon {
+  font-size: 32px;
+  margin-left: 40px;
 }
 
 select{
