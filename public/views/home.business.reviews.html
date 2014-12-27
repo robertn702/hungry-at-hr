@@ -1,4 +1,10 @@
 <div>
   <h2>Reviews</h2>
-  <button class="ui button" ui-sref="home.business.write-review">Write a Review</button>
+  <div ng-repeat="review in reviews">
+    <div>{{review.review_text}}</div>
+  </div>
+  <button class="ui labeled icon button" ui-sref="home.business.write-review">
+    <i class="write icon"></i>
+    Write a Review
+  </button>
 </div>

@@ -35,6 +35,19 @@ angular.module('hungry.write-review', [])
   };
 
   $scope.submitReview = function() {
-
+    $http.post('/review', {
+      google_id: $stateParams.google_id,
+      review: $scope.textareaInput,
+      rating: $scope.rating,
+      price: $scope.price,
+      date: Date.now()
+    }).
+    success(function(data, status, headers, config) {
+      console.log('posted review');
+      console.log('data: ', data);
+    }).
+    error(function(data, status, headers, config) {
+      console.error('error posting review');
+    });
   };
 });

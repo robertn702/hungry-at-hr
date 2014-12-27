@@ -6,6 +6,8 @@ var userSchema = new mongoose.Schema({
     username: String,
     votes: {type: Number, default: 0},
     review_count: {type: Number, default: 0},
+    cohort: Number,
+    image: String,
     date: Date
 });
 

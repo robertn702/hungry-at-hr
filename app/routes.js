@@ -7,10 +7,10 @@ var User = require('./models/user');
 module.exports = function(app, passport) {
 // server routes ===========================================================
   app.get('/', function(req, res) {
+    console.log('req.session: ', req.session);
     res.render(__dirname + '/index.html'); // load our client/index.html file
   });
 
-  // TODO: CHECK IF BUSINESS ALREADY EXISTS
   app.post('/business', function(req, res) {
     new Business({
       google_id: req.body.google_id,
@@ -50,11 +50,15 @@ module.exports = function(app, passport) {
     console.log('check if authenticated: ', req.isAuthenticated());
     console.log('req.user object: ', req.user);
     new Review({
-      user_id: req.user._id,
-      username: req.user.username,
-      business_id: req.body.business_id,
+      user: {
+        user_id: req.user._id,
+        username: req.user.username,
+        image: req.user.image
+      },
+      google_id: req.body.google_id,
       review_text: req.body.review,
-      stars: req.body.stars,
+      rating: req.body.rating,
+      price: req.body.price,
       date: Date.now()
     }).save(function(err, business) {
       if (err) {
@@ -63,10 +67,11 @@ module.exports = function(app, passport) {
         // update business data
         Business.findByIdAndUpdate(
           req.body.business_id,
-          { $inc: { review_count: 1, stars: req.body.stars }},
+          { $inc: { review_count: 1, rating: req.body.rating }},
           function(err, business) {
           });
 
+        // TODO may need to change this due to review schema change (user drilldown)
         User.findByIdAndUpdate(
           req.user._id,
           { $inc: { review_count: 1}},
@@ -80,6 +85,7 @@ module.exports = function(app, passport) {
   });
 
   app.get('/review', function(req, res) {
+    console.log('req.params: ', req.params);
     Review.find(function(err, businesses) {
       if (err) {
         throw (err);
@@ -107,14 +113,13 @@ module.exports = function(app, passport) {
 
   // the callback after github has authenticated the user
   app.get('/auth/github/callback', passport.authenticate('github', {
-      failureRedirect: '/login',
-      successRedirect: '/'
-      }));
-    // function(req, res) {
-    //   console.log('successful authentication!');
-    //   // Successful authentication, redirect home.
-    //   res.redirect('/');
-  // });
+        failureRedirect: '/login'
+      }),
+      function(req, res) {
+        console.log('successful authentication!');
+        // console.log('res: ', res);
+        res.redirect('/');
+      });
 }
 
 function isLoggedIn(req, res, next) {

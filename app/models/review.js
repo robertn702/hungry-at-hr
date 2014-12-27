@@ -2,13 +2,18 @@
 var mongoose = require('mongoose');
 
 var reviewSchema = new mongoose.Schema({
+  user: {
     user_id: String,
     username: String,
-    business_id: String,
-    review_text: String,
-    votes: {type: Number, default: 0},
-    stars: {type: Number, default: 0},
-    date: Date
+    image: String
+  },
+  google_id: String,
+  review_text: String,
+  votes: {type: Number, default: 0},
+  rating: {type: Number, default: 0},
+  price: {type: Number, default: 0},
+  tags: Array,
+  date: Date
 });
 
 // define our nerd model
