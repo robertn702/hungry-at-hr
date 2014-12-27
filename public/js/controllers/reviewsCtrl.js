@@ -6,7 +6,7 @@ angular.module('hungry.reviews', [])
   };
 
   var getReviews = function() {
-    $http.get('/review').
+    $http.get('/review/' + $stateParams.google_id).
     success(function(data, status, headers, config) {
       $scope.reviews = data;
     }).

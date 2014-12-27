@@ -84,13 +84,12 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get('/review', function(req, res) {
-    console.log('req.params: ', req.params);
-    Review.find(function(err, businesses) {
+  app.get('/review/:google_id', function(req, res) {
+    Review.find({google_id: req.params.google_id}, function(err, reviews) {
       if (err) {
         throw (err);
       } else {
-        res.json(businesses);
+        res.json(reviews);
         res.status(200);
       }
     });
