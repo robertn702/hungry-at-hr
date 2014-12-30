@@ -1,7 +1,23 @@
 <div>
   <h2>Reviews</h2>
-  <div ng-repeat="review in reviews">
-    <div>{{review.review_text}}</div>
+  <div id="review-wrapper">
+    <div ng-repeat="review in reviews">
+      <div class="review-left">
+        <img class="review-image" src="{{review.user.image}}">
+        <span class="username"><b>{{review.user.username}}</b></span>
+      </div>
+
+      <div class="review-right">
+        <span class="review-stars">
+          <b>Rating: {{review.rating}}</b>
+          <!-- <i class="small star icon" ng-repeat="rating in repeatXTimes({{review.rating}}) track by $index"></i>
+          <i class="small empty star icon" ng-repeat="rating in repeatXTimes({{5-review.rating}})"></i> -->
+        </span>
+        <span class="date"><b>Date: {{review.date}}</b></span>
+        <!-- <span class="date">{{review.date.getDay()}}</span> -->
+        <div>{{review.review_text}}</div>
+      </div>
+    </div>
   </div>
   <button class="ui labeled icon button" ui-sref="home.business.write-review">
     <i class="write icon"></i>

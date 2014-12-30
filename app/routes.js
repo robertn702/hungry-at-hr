@@ -34,7 +34,6 @@ module.exports = function(app, passport) {
   });
 
   app.get('/business', function(req, res) {
-    console.log('req.session: ', req.session);
     Business.find(function(err, businesses) {
       if (err) {
         throw (err);

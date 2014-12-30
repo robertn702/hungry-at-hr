@@ -6,9 +6,6 @@ angular.module('hungry.write-review', [])
   $scope.price = 0;
 
   // allows user to use ng-repeat set number of times
-  $scope.repeatXTimes = function(x) {
-    return new Array(x);
-  };
 
   $scope.updateRating = function(rating) {
     $scope.rating = rating;
@@ -44,7 +41,6 @@ angular.module('hungry.write-review', [])
     }).
     success(function(data, status, headers, config) {
       console.log('posted review');
-      console.log('data: ', data);
     }).
     error(function(data, status, headers, config) {
       console.error('error posting review');

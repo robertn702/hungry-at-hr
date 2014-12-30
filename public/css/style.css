@@ -1,9 +1,4 @@
 @font-face {
-  font-family: 'Jaapokki Regular';
-  src: url('Jaapokki-font-package-1.0/Regular/Jaapokki-Regular.otf');
-}
-
-@font-face {
   font-family: 'Bebas Bold';
   src: url('bebas/BebasNeue Bold.otf');
 }
@@ -26,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, textarea {
+p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, textarea, img {
   margin: 0;
   padding: 0;
   font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif;
@@ -215,3 +210,42 @@ modal {
   display: inline-block;
 }
 
+.back-button {
+  /*background-color:red;*/
+  float: right;
+}
+
+.review-left {
+  /*display: inline-block;*/
+  width: 175px;
+  /*background-color: yellow;*/
+  float:left;
+}
+.review-right {
+  display: inline-block;
+  min-height: 60px;
+  width: 350px;
+  /*background-color: blue;*/
+  margin: 0px 10px 10px 10px;
+}
+
+.review-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+#review-wrapper {
+  overflow: scroll;
+  height: 40vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.username {
+  margin-left: 5px;
+  /*background-color: red;*/
+  display: inline-block;
+  /*line-height: 50px;*/
+  vertical-align: top;
+}

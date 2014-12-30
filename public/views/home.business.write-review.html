@@ -1,4 +1,9 @@
 <div>
+  <button class="back-button ui labeled icon button" ui-sref="home.business.reviews">
+    <i class="left arrow icon"></i>
+    Back to Reviews
+  </button>
+
   <h2>Write a Review</h2>
   <h3>Rating</h3>
   <i ng-class="emptyOrNot($index)" class="star icon" ng-repeat="rating in repeatXTimes(5) track by $index" ng-click="updateRating($index+1)"></i>
@@ -9,5 +14,4 @@
   <h3>Your Review </h3>
   <textarea name="" id="" cols="" rows="" ng-model="textareaInput"></textarea>
   <button class="ui button" ng-click="submitReview()">Submit Review</button>
-  <button class="ui button" ui-sref="home.business.reviews">Back to Reviews</button>
 </div>

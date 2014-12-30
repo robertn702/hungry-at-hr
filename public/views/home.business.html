@@ -1,6 +1,11 @@
 <div class="wrapper">
 
   <section class="main">
+    <button class="back-button ui labeled icon button" ng-click="backToMap()">
+      <i class="map icon"></i>
+      Back to Map
+    </button>
+
     <div>
       <h1>{{business_data.business_name}}</h1>
       <div>
@@ -21,10 +26,6 @@
         </span>
       </div>
     </div>
-    <button class="ui labeled icon button" ng-click="backToMap()">
-      <i class="map icon"></i>
-      Back to Map
-    </button>
     <div class="ui divider"></div>
 
     <div ui-view></div>

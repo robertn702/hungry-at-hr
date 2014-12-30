@@ -62,4 +62,8 @@ angular.module('hungry.home', [])
     }
   };
 
+  $scope.repeatXTimes = function(x) {
+    return new Array(x);
+  };
+
 });

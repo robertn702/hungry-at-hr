@@ -1,6 +1,10 @@
 <div class="wrapper">
 
   <section class="main">
+    <button class="back-button ui labeled icon button" ng-click="backToMap()">
+      <i class="map icon"></i>
+      Back to Map
+    </button>
     <div class="ui large icon input">
       <input type="text" ng-autocomplete ng-model="business" options="inputOptions" details="details" placeholder="Add a place to {{searchItem}}...">
       <i class="search icon" ng-click="getData(details)"></i>
@@ -25,11 +29,8 @@
         </span>
       </div>
     </div>
-    <button class="ui labeled icon button" ng-click="backToMap()">
-      <i class="map icon"></i>
-      Back to Map
-    </button>
     <div class="ui divider"></div>
+
     <button ng-click="submitData()" ng-class="{disabled: disable}" class="ui labeled icon button" ng-show="business_data.google_id">
       <i class="plus icon"></i>
       Add {{business_data.business_name}}
