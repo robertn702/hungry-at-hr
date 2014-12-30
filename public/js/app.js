@@ -22,13 +22,13 @@ var app = angular.module('hungry', [
       authenticate: false
     })
         .state('home.search', {
-          url: '/search/:filterNum',
+          url: '/:filterNum/search/',
           templateUrl: 'views/home.search.html',
           controller: 'SearchController',
           authenticate: false
         })
         .state('home.business', {
-          url: '/business/:filterNum/:google_id',
+          url: '/:filterNum/business/:google_id',
           templateUrl: 'views/home.business.html',
           controller: 'BusinessController',
           authenticate: false
@@ -46,7 +46,7 @@ var app = angular.module('hungry', [
               authenticate: true
             })
         .state('home.add-business', {
-          url: '/add-business',
+          url: '/:filterNum/add-business',
           templateUrl: 'views/home.add-business.html',
           controller: 'AddBusinessController',
           authenticate: true

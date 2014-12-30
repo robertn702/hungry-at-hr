@@ -12,6 +12,7 @@ angular.module('hungry.home', [])
       $scope.showHeaderIcons = false;
     };
 
+    // initally don't show modal
     $scope.show_modal = false;
 
     // gets business data
@@ -60,4 +61,5 @@ angular.module('hungry.home', [])
       angular.element(document.querySelector('.background-gradient-home')).addClass('background-gradient').removeClass('background-gradient-home');
     }
   };
+
 });

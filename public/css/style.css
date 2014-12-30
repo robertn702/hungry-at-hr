@@ -207,3 +207,11 @@ modal {
   color: black;
 }
 
+.business-info-icon {
+  float: left;
+}
+
+.business-info {
+  display: inline-block;
+}
+

@@ -7,7 +7,6 @@ var User = require('./models/user');
 module.exports = function(app, passport) {
 // server routes ===========================================================
   app.get('/', function(req, res) {
-    console.log('req.session: ', req.session);
     res.render(__dirname + '/index.html'); // load our client/index.html file
   });
 
@@ -35,6 +34,7 @@ module.exports = function(app, passport) {
   });
 
   app.get('/business', function(req, res) {
+    console.log('req.session: ', req.session);
     Business.find(function(err, businesses) {
       if (err) {
         throw (err);
@@ -48,7 +48,6 @@ module.exports = function(app, passport) {
   app.post('/review', function(req, res) {
     // add review
     console.log('check if authenticated: ', req.isAuthenticated());
-    console.log('req.user object: ', req.user);
     new Review({
       user: {
         user_id: req.user._id,

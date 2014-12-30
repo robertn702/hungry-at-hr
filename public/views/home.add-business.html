@@ -5,11 +5,27 @@
       <input type="text" ng-autocomplete ng-model="business" options="inputOptions" details="details" placeholder="Add a place to {{searchItem}}...">
       <i class="search icon" ng-click="getData(details)"></i>
     </div>
-    <h1>{{business_data.business_name}}</h1>
-    <h3>{{business_data.address[0]}}</h3>
-    <h3>{{business_data.address[1]}}</h3>
-    <h3>{{business_data.phone}}</h3>
-    <button class="ui labeled icon button" ui-sref="home.search">
+    <div>
+      <h1>{{business_data.business_name}}</h1>
+      <div>
+        <span class="business-info-icon">
+          <i class="marker icon"></i>
+        </span>
+        <span class="business-info">
+          <h3>{{business_data.address[0]}}</h3>
+          <h3>{{business_data.address[1]}}</h3>
+        </span>
+      </div>
+      <div>
+        <span class="business-info-icon">
+          <i class="call icon"></i>
+        </span>
+        <span class="business-info">
+          <h3>{{business_data.phone}}</h3>
+        </span>
+      </div>
+    </div>
+    <button class="ui labeled icon button" ng-click="backToMap()">
       <i class="map icon"></i>
       Back to Map
     </button>

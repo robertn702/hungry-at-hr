@@ -1,6 +1,6 @@
 angular.module('hungry.add-business', [])
 
-.controller('AddBusinessController', function($scope, $http) {
+.controller('AddBusinessController', function($scope, $http, $state, $stateParams) {
   $scope.business_data = {};
   $scope.address = [];
   $scope.inputOptions = {
@@ -19,6 +19,10 @@ angular.module('hungry.add-business', [])
   };
 
   init();
+
+  $scope.backToMap = function() {
+    $state.go('home.search', { filterNum: $stateParams.filterNum });
+  };
 
   $scope.getData = function(details) {
     $scope.map = {

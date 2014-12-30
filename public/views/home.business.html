@@ -4,24 +4,24 @@
     <div>
       <h1>{{business_data.business_name}}</h1>
       <div>
-        <span style="float:left;">
+        <span class="business-info-icon">
           <i class="marker icon"></i>
         </span>
-        <span style="display: inline-block;">
+        <span class="business-info">
           <h3>{{business_data.address[0]}}</h3>
           <h3>{{business_data.address[1]}}</h3>
         </span>
       </div>
       <div>
-        <span style="display: inline">
+        <span class="business-info-icon">
           <i class="call icon"></i>
         </span>
-        <span style="display: inline-block">
+        <span class="business-info">
           <h3>{{business_data.phone}}</h3>
         </span>
       </div>
     </div>
-    <button class="ui labeled icon button" ui-sref="home.search">
+    <button class="ui labeled icon button" ng-click="backToMap()">
       <i class="map icon"></i>
       Back to Map
     </button>

@@ -22,6 +22,10 @@ angular.module('hungry.business', [])
 
   init();
 
+  $scope.backToMap = function() {
+    $state.go('home.search', { filterNum: $stateParams.filterNum });
+  };
+
   var business_latitude = $scope.business_data.coordinates.latitude;
   var business_longitude = $scope.business_data.coordinates.longitude;
 
