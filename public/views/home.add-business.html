@@ -8,7 +8,7 @@
       <input type="text" ng-autocomplete ng-model="business" options="inputOptions" details="details" placeholder="Add a place to {{searchItem}}...">
       <i class="search icon" ng-click="getData(details)"></i>
     </div>
-    <div>
+    <div ng-show="business_data.google_id">
       <h1>{{business_data.business_name}}</h1>
       <div>
         <span class="business-info-icon">

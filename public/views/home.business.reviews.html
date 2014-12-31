@@ -1,7 +1,7 @@
 <div>
   <h2>Reviews</h2>
   <div id="review-wrapper">
-    <div ng-repeat="review in reviews">
+    <div class="single-review" ng-repeat="review in reviews">
       <div class="review-left">
         <img class="review-image" src="{{review.user.image}}">
         <span class="username"><b>{{review.user.username}}</b></span>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <button class="ui labeled icon button" ui-sref="home.business.write-review">
+  <button class=" ui labeled icon button" ui-sref="home.business.write-review">
     <i class="write icon"></i>
     Write a Review
   </button>

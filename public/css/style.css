@@ -50,7 +50,6 @@ aside {
   /*overflow: scroll;*/
 }
 
-
 /***** INDEX *****/
 
 html, body {
@@ -234,6 +233,11 @@ aside .angular-google-map-container {
   margin-bottom: 10px;
 }
 
+.single-review {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .review-image {
   height: 50px;
   width: 50px;
@@ -263,4 +267,5 @@ aside .angular-google-map-container {
 textarea {
   width: 80%;
   height: 20vh;
+  padding: 5px;
 }

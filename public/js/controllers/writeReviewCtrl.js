@@ -29,6 +29,13 @@ angular.module('hungry.write-review', [])
       return 'green';
   };
 
+  $scope.hasPriceAndRating = function(price, rating) {
+    if (rating > 0 && price > 0)
+      return '';
+    else
+      return 'disabled';
+  };
+
   $scope.submitReview = function() {
     $http.post('/review', {
       google_id: $stateParams.google_id,
