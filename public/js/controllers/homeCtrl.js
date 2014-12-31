@@ -62,6 +62,7 @@ angular.module('hungry.home', [])
     }
   };
 
+  // allows user to ng-repeat set number of times
   $scope.repeatXTimes = function(x) {
     return new Array(x);
   };

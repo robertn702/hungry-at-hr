@@ -8,12 +8,6 @@
   src: url('bebas/BebasNeue Light.otf');
 }
 
-html, body {
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-}
-
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
@@ -27,44 +21,42 @@ p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, t
   font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif;
 }
 
-header {
-  color: white;
+/***** ALL *****/
 
-  height: 80px;
-  line-height: 80px;
-
-  font-size: 65px;
-  font-family: 'Bebas Bold';
-
-  text-align: center;
-  vertical-align: middle;
-}
-
-.home-header {
+.wrapper {
+  display: block;
   height: 80vh;
-  line-height: 80vh;
+  border-radius: 5px;
+  background-color: white;
+  width: 70%;
+  margin: 0px auto;
 }
 
-.weather-icon {
-  font-size: 32px;
-  margin-right: 40px;
+.main {
+  box-sizing: border-box;
+  display: inline-block;
+  float: left;
+  height: 100%;
+  width: 70%;
+  padding: 30px 15px 30px 40px;
 }
 
-.login-icon {
-  font-size: 32px;
-  margin-left: 40px;
+aside {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100%;
+  width: 30%;
+  padding: 30px 40px 30px 15px;
+  /*overflow: scroll;*/
 }
 
-select{
-  font-family: 'Bebas Light';
-  background-color:rgba(0, 0, 0, 0);
-  text-decoration: underline;
-  border: none;
-  /*background-color: red;*/
 
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+/***** INDEX *****/
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
 }
 
 .background {
@@ -76,7 +68,6 @@ select{
   display: block;
   width: 100%;
   height: 100%;
-  background-image:;
 
   background-position: center top;
   -webkit-background-size: cover;
@@ -107,6 +98,55 @@ select{
     )
 }
 
+/***** HOME *****/
+
+header {
+  color: white;
+
+  height: 80px;
+  line-height: 80px;
+
+  font-size: 65px;
+  font-family: 'Bebas Bold';
+
+  text-align: center;
+  vertical-align: middle;
+}
+
+.home-header {
+  height: 80vh;
+  line-height: 80vh;
+}
+
+.weather-icon {
+  font-size: 32px;
+  margin-right: 40px;
+}
+
+.login-icon {
+  font-size: 32px;
+  margin-left: 40px;
+}
+
+modal {
+  display: inline-block;
+}
+
+.modal-content {
+  color: black;
+}
+
+select {
+  font-family: 'Bebas Light';
+  background-color:rgba(0, 0, 0, 0);
+  text-decoration: underline;
+  border: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 .container {
   position: fixed;
   left: 0;
@@ -122,15 +162,7 @@ select{
   vertical-align: middle;
 }
 
-.wrapper {
-  display: block;
-  height: 80vh;
-  border-radius: 5px;
-  background-color: white;
-  /*opacity: .8;*/
-  width: 70%;
-  margin: 0px auto;
-}
+/***** SEARCH *****/
 
 .main-map {
   box-sizing: border-box;
@@ -140,30 +172,20 @@ select{
   width: 70%;
 }
 
-.main {
-  box-sizing: border-box;
-  display: inline-block;
-  float: left;
-  height: 100%;
-  width: 70%;
-  padding: 30px 15px 30px 40px;
-  /*background-color:red;*/
-}
-
-aside {
-  box-sizing: border-box;
-  display: inline-block;
-  height: 100%;
-  width: 30%;
-  padding: 30px 40px 30px 15px;
-  /*overflow: scroll;*/
-  /*background-color:green;*/
-}
-
 .business-list {
+  cursor: pointer;
   overflow: scroll;
   height: 80%;
   margin-bottom: 10px;
+}
+
+.business-list > div:hover {
+  -webkit-transition: color .1s;
+  transition: color .1s;
+}
+
+.business-list > div:hover {
+  color: gray;
 }
 
 .main-map .angular-google-map-container {
@@ -176,6 +198,8 @@ aside {
   display: block;
 }
 
+/***** BUSINESS & ADD-BUSINESS *****/
+
 aside .angular-google-map-container {
   border-radius: 5px;
   height: 150px;
@@ -185,21 +209,8 @@ aside .angular-google-map-container {
   display: block;
 }
 
-textarea {
-  width: 80%;
-  height: 20vh;
-}
-
 .arrow, .call {
   vertical-align: top;
-}
-
-modal {
-  display: inline-block;
-}
-
-.modal-content {
-  color: black;
 }
 
 .business-info-icon {
@@ -211,29 +222,10 @@ modal {
 }
 
 .back-button {
-  /*background-color:red;*/
   float: right;
 }
 
-.review-left {
-  /*display: inline-block;*/
-  width: 175px;
-  /*background-color: yellow;*/
-  float:left;
-}
-.review-right {
-  display: inline-block;
-  min-height: 60px;
-  width: 350px;
-  /*background-color: blue;*/
-  margin: 0px 10px 10px 10px;
-}
-
-.review-image {
-  height: 50px;
-  width: 50px;
-  border-radius: 5px;
-}
+/***** REVIEWS *****/
 
 #review-wrapper {
   overflow: scroll;
@@ -242,10 +234,33 @@ modal {
   margin-bottom: 10px;
 }
 
+.review-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.review-left {
+  width: 175px;
+  float:left;
+}
+
+.review-right {
+  display: inline-block;
+  min-height: 60px;
+  width: 350px;
+  margin: 0px 10px 10px 10px;
+}
+
 .username {
   margin-left: 5px;
-  /*background-color: red;*/
   display: inline-block;
-  /*line-height: 50px;*/
   vertical-align: top;
+}
+
+/***** WRITE-REVIEW *****/
+
+textarea {
+  width: 80%;
+  height: 20vh;
 }
