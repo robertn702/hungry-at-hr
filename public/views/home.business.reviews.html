@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <button class=" ui labeled icon button" ui-sref="home.business.write-review">
+  <button ng-class="{disabled: !isLoggedIn}" class=" ui labeled icon button" ui-sref="home.business.write-review">
     <i class="write icon"></i>
     Write a Review
   </button>

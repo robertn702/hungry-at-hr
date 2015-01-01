@@ -117,6 +117,11 @@ module.exports = function(app, passport) {
         // console.log('res: ', res);
         res.redirect('/');
       });
+
+  app.get('/logged-in', function(req, res) {
+    res.send(200, {result: req.isAuthenticated()});
+  });
+
 }
 
 function isLoggedIn(req, res, next) {

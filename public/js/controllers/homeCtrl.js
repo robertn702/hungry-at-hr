@@ -12,11 +12,14 @@ angular.module('hungry.home', [])
       $scope.showHeaderIcons = false;
     };
 
-    // initally don't show modal
-    $scope.show_modal = false;
+    //checks if user is logged in
+    loggedIn();
 
     // gets business data
     getData();
+
+    // initally don't show modal
+    $scope.show_modal = false;
 
     // persists the filter value
     $scope.searchItem = setFilterValue($scope.searchItems, $stateParams);
@@ -29,7 +32,17 @@ angular.module('hungry.home', [])
         $scope.data = data;
       }).
       error(function(data, status, headers, config) {
-        console.error('error getting data');
+        console.error('error getting business data');
+      });
+  };
+
+  var loggedIn = function() {
+    $http.get('/logged-in').
+      success(function(data, status, headers, config) {
+        $scope.isLoggedIn = data.result;
+      }).
+      error(function(data, status, headers, config) {
+        console.error('error getting authentication data');
       });
   };
 
