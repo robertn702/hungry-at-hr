@@ -15,7 +15,7 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        console.log('serializing user: ', user);
+        console.log('serializing user');
         done(null, user.id);
     });
 
@@ -37,8 +37,6 @@ module.exports = function(passport) {
     },
     function(accessToken, refreshToken, profile, done) {
         process.nextTick(function() {
-            console.log('user profile: ', profile);
-            console.log('user image: ', profile._json.avatar_url);
             User.findOne({_id: profile.id}, function(err, user) {
                 if (err) {
                     console.log("err");

@@ -4,6 +4,7 @@ angular.module('hungry.business', [])
   var init = function() {
     // gets the business object that matches the google_id
     $scope.business_data = getBusiness($stateParams.google_id);
+    console.log($scope.business_data);
 
     // automatically shows the /reviews view when the business page loads
     if ($state.is('home.business')) {

@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
   app.post('/business', function(req, res) {
     new Business({
       google_id: req.body.google_id,
-      filter: req.body.filter,  // Eat, Drink, Study
+      filter: req.body.filter,        // Eat, Drink, Study
       address: req.body.address,      // array of 2 strings
       hours: req.body.hours,
       coordinates: req.body.coordinates,
@@ -27,6 +27,8 @@ module.exports = function(app, passport) {
         throw err;
       } else {
         // res.json(req.body);
+
+        // TODO redirect to the added business page
         res.redirect('/');
         res.status(201);
       }
@@ -62,19 +64,22 @@ module.exports = function(app, passport) {
       if (err) {
         throw err;
       } else {
+        console.log('updating business');
+        console.log('google_id: ', req.body.google_id);
+        console.log('rating: ', req.body.rating);
+        console.log('price: ', req.body.price);
         // update business data
-        Business.findByIdAndUpdate(
-          req.body.business_id,
-          { $inc: { review_count: 1, rating: req.body.rating }},
-          function(err, business) {
-          });
+        Business.update(
+          { google_id: req.body.google_id },
+          { $inc: { review_count: 1, rating: req.body.rating, price: req.body.price } },
+          function(err, business) {}
+        );
 
         // TODO may need to change this due to review schema change (user drilldown)
         User.findByIdAndUpdate(
           req.user._id,
-          { $inc: { review_count: 1}},
-          function(err, user) {
-          });
+          { $inc: { review_count: 1}}, function(err, user) {}
+          );
           // res.json(req.body);
           res.redirect('/');
           res.status(201);
