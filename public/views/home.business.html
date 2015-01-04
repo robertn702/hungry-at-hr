@@ -25,6 +25,8 @@
         </span>
       </div>
     </div>
+    <div>Rating: {{(business_data.rating / business_data.review_count).toFixed(1)}}</div>
+    <div>Price: {{(business_data.price / business_data.review_count).toFixed(1)}}</div>
     <div class="ui divider"></div>
 
     <div ui-view></div>
