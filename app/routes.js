@@ -65,9 +65,6 @@ module.exports = function(app, passport) {
         throw err;
       } else {
         console.log('updating business');
-        console.log('google_id: ', req.body.google_id);
-        console.log('rating: ', req.body.rating);
-        console.log('price: ', req.body.price);
         // update business data
         Business.update(
           { google_id: req.body.google_id },
@@ -79,11 +76,11 @@ module.exports = function(app, passport) {
         User.findByIdAndUpdate(
           req.user._id,
           { $inc: { review_count: 1}}, function(err, user) {}
-          );
-          // res.json(req.body);
-          res.redirect('/');
-          res.status(201);
-        }
+        );
+        res.redirect('/');
+        res.status(201);
+      }
+
     });
   });
 
