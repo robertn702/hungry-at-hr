@@ -172,19 +172,23 @@ select {
 }
 
 .business-list {
+  background-color: white;
   cursor: pointer;
   overflow: scroll;
   height: 80%;
   margin-bottom: 10px;
 }
 
-.business-list > div:hover {
-  -webkit-transition: color .1s;
-  transition: color .1s;
+.business-list > div:hover, .highlighted {
+  color: white;
+  background-color: #d3d3d3;
+  /*-webkit-transition: color .1s, background-color .1s;*/
+  /*transition: color .1s, background-color .1s;*/
 }
 
-.business-list > div:hover {
-  color: gray;
+.business-list-item {
+  border-bottom: 1px solid #d3d3d3;
+  padding: 5px 10px;
 }
 
 .main-map .angular-google-map-container {

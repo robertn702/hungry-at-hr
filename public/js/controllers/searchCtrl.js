@@ -14,13 +14,34 @@ angular.module('hungry.search', [])
       markersArray.push({
       id: i,
       latitude: data[i].coordinates.latitude,
-      longitude: data[i].coordinates.longitude
+      longitude: data[i].coordinates.longitude,
+      google_id: data[i].google_id
       });
     }
     return markersArray;
   };
 
   init();
+
+  $scope.markerEvents = {
+    mouseover: function(marker) {
+      console.log('mouseenter');
+      console.log('marker: ', marker);
+      angular.element(document.querySelector('#list_' + marker.model.google_id)).addClass('highlighted');
+    },
+    mouseout: function(marker) {
+      angular.element(document.querySelector('#list_' + marker.model.google_id)).removeClass('highlighted');
+      console.log('mouseleave');
+    },
+    click: function(marker) {
+      console.log('stateparams filternum: ', $stateParams.filterNum);
+      $state.go('home.business', { google_id: marker.model.google_id, filterNum: $stateParams.filterNum });
+    }
+  };
+
+  // $scope.markerOptions = {
+  //   place
+  // }
 
 
   $scope.map = {
