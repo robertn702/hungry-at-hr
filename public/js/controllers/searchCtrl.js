@@ -14,6 +14,17 @@ angular.module('hungry.search', [])
   // creates and returns array of business coordinates
   var getMarkers = function(data) {
     var markersArray = [];
+
+    var hackReactor = {
+      id: 'Hack Reactor',
+      latitude: 37.783748,
+      longitude: -122.409046,
+      google_id: 'mothership',
+      title: 'Hack Reactor'
+    };
+
+    markersArray.push(hackReactor);
+
     for (var i = 0; i < data.length; i++) {
       markersArray.push({
         id: i,
@@ -59,10 +70,11 @@ angular.module('hungry.search', [])
   $scope.businessListEventHandler = function(listEvent) {
     var id = listEvent.target.id.slice(5); // removes 'list_' from id to get the google_id
     var markers = $scope.markerControl.getGMarkers();
+    console.log(markers);
 
-    var allButSelectedIsVisible = function(isVisible) {
+    var allButSelectedIsNotHidden = function(isVisible) {
       for (var i = 0; i < markers.length; i++) {
-        if (markers[i].model.google_id !== id) {
+        if (markers[i].model.google_id !== id && markers[i].model.google_id !== 'mothership') {
           markers[i].setVisible(isVisible);
         }
       }
@@ -70,10 +82,10 @@ angular.module('hungry.search', [])
 
     switch (listEvent.type) {
       case "mouseover":
-        allButSelectedIsVisible(false);
+        allButSelectedIsNotHidden(false);
         break;
       case "mouseleave":
-        allButSelectedIsVisible(true);
+        allButSelectedIsNotHidden(true);
         break;
     }
     var map = angular.element(document.querySelector('.angular-google-map'));
