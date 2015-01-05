@@ -16,7 +16,7 @@ angular.module('hungry.search', [])
     var markersArray = [];
 
     var hackReactor = {
-      id: 'Hack Reactor',
+      id: 0,
       latitude: 37.783748,
       longitude: -122.409046,
       google_id: 'mothership',
@@ -27,7 +27,7 @@ angular.module('hungry.search', [])
 
     for (var i = 0; i < data.length; i++) {
       markersArray.push({
-        id: i,
+        id: i + 1,
         latitude: data[i].coordinates.latitude,
         longitude: data[i].coordinates.longitude,
         google_id: data[i].google_id,
@@ -70,7 +70,6 @@ angular.module('hungry.search', [])
   $scope.businessListEventHandler = function(listEvent) {
     var id = listEvent.target.id.slice(5); // removes 'list_' from id to get the google_id
     var markers = $scope.markerControl.getGMarkers();
-    console.log(markers);
 
     var allButSelectedIsNotHidden = function(isVisible) {
       for (var i = 0; i < markers.length; i++) {

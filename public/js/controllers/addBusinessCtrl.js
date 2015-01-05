@@ -56,6 +56,7 @@ angular.module('hungry.add-business', [])
     $http.post('/business', $scope.business_data).
       success(function(data, status, headers, config) {
         console.log('success', data);
+        $state.go('home.business', { google_id: data.google_id, filterNum: $stateParams.filterNum });
       }).
       error(function(data, status, headers, config) {
         console.log('error', status);

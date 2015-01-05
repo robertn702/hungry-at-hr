@@ -29,7 +29,7 @@ module.exports = function(app, passport) {
         // res.json(req.body);
 
         // TODO redirect to the added business page
-        res.redirect('/');
+        // res.redirect('/');
         res.status(201);
       }
     });
