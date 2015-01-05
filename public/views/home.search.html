@@ -2,7 +2,14 @@
 
   <section class="main-map">
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-      <ui-gmap-markers models="markers" coords="'self'" icon="'icon'" events="markerEvents"></ui-gmap-markers>
+      <ui-gmap-markers
+        id="markers"
+        models="markers"
+        coords="'self'"
+        icon="'icon'"
+        events="markerEvents"
+        control="markerControl">
+      </ui-gmap-markers>
     </ui-gmap-google-map>
   </section>
 
@@ -15,7 +22,13 @@
     <div class="ui divider"></div>
 
     <div class="business-list">
-      <div ng-repeat="business in data" class="business-list-item" id="list_{{business.google_id}}" ui-sref="home.business({ google_id: business.google_id, filterNum: searchItems.indexOf(searchItem) })">
+      <div
+        ng-repeat="business in data"
+        class="business-list-item"
+        id="list_{{business.google_id}}"
+        ng-mouseover="businessListEventHandler($event)"
+        ng-mouseleave="businessListEventHandler($event)"
+        ui-sref="home.business({ google_id: business.google_id, filterNum: searchItems.indexOf(searchItem) })">
         {{business.business_name}}
       </div>
     </div>
