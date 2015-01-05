@@ -1,6 +1,8 @@
 angular.module('hungry.search', [])
 
 .controller('SearchController', function($scope, $state, $http, $stateParams) {
+  $scope.business_list
+
   var init = function() {
     $scope.map = {
       center: { latitude: 37.783748, longitude: -122.409046 },
@@ -8,7 +10,23 @@ angular.module('hungry.search', [])
     };
 
     $scope.markerControl = {};
-    $scope.markers = getMarkers($scope.data);
+
+    switch ($stateParams.filterNum) {
+      case '0':
+        console.log('case 0');
+        $scope.business_list = $scope.placesToEat;
+        break;
+      case '1':
+        console.log('case 1');
+        $scope.business_list = $scope.placesToDrink;
+        break;
+      case '2':
+        console.log('case 2');
+        $scope.business_list = $scope.placesToStudy;
+        break;
+    }
+
+    $scope.markers = getMarkers($scope.business_list);
   };
 
   // creates and returns array of business coordinates
@@ -87,6 +105,7 @@ angular.module('hungry.search', [])
         allButSelectedIsNotHidden(true);
         break;
     }
+
     var map = angular.element(document.querySelector('.angular-google-map'));
   };
 

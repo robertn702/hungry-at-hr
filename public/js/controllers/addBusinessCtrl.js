@@ -32,6 +32,7 @@ angular.module('hungry.add-business', [])
       },
       zoom: 16
     };
+
     $scope.marker = [{
       id: 0,
       latitude: details.geometry.location.k,
@@ -55,11 +56,11 @@ angular.module('hungry.add-business', [])
   $scope.submitData = function() {
     $http.post('/business', $scope.business_data).
       success(function(data, status, headers, config) {
-        console.log('success', data);
+        console.log('added business', data);
         $state.go('home.business', { google_id: data.google_id, filterNum: $stateParams.filterNum });
       }).
       error(function(data, status, headers, config) {
-        console.log('error', status);
+        console.log('error adding business', status);
       });
   };
 
@@ -113,7 +114,7 @@ angular.module('hungry.add-business', [])
   var formatData = function(details) {
     return {
       google_id: details.place_id,
-      filter: [$scope.searchItem],  // Eat, Drink, Study
+      filter: [$stateParams.filterNum],  // Eat, Drink, Study
       address: $scope.address,      // array of 2 strings
       hours: $scope.hours,
       coordinates: {

@@ -26,10 +26,6 @@ module.exports = function(app, passport) {
       if (err) {
         throw err;
       } else {
-        // res.json(req.body);
-
-        // TODO redirect to the added business page
-        // res.redirect('/');
         res.status(201);
       }
     });
