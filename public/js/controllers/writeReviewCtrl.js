@@ -5,10 +5,12 @@ angular.module('hungry.write-review', [])
   $scope.rating = 0;
   $scope.price = 0;
 
+  // sets the user's star rating
   $scope.updateRating = function(rating) {
     $scope.rating = rating;
   };
 
+  // sets the user's price rating
   $scope.updatePrice = function(price) {
     $scope.price = price;
   };
