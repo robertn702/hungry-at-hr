@@ -29,6 +29,7 @@ angular.module('hungry.write-review', [])
       return 'green';
   };
 
+  // disables submit button if a price or rating has not been selected
   $scope.hasPriceAndRating = function(price, rating) {
     if (rating > 0 && price > 0)
       return '';
@@ -36,6 +37,7 @@ angular.module('hungry.write-review', [])
       return 'disabled';
   };
 
+  // submits the user's review
   $scope.submitReview = function() {
     $http.post('/review', {
       google_id: $stateParams.google_id,
