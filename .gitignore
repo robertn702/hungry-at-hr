@@ -9,6 +9,7 @@ pids
 
 # Configuration data
 config/auth.js
+config/db.js
 
 # Dependency directories
 # Deployed apps should consider commenting these lines out:
