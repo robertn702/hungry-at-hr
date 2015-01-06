@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Bebas Bold';
-  src: url('bebas/BebasNeue Bold.otf');
+  src: url('bebas/BebasNeue%20Bold.otf');
 }
 
 @font-face {
   font-family: 'Bebas Light';
-  src: url('bebas/BebasNeue Light.otf');
+  src: url('bebas/BebasNeue%20Light.otf');
 }
 
 h1, h2, h3, h4, h5, h6 {
