@@ -1,5 +1,5 @@
 # Configuration data
-config/auth.js
+# config/auth.js
 config/db.js
 
 # Dependency directories

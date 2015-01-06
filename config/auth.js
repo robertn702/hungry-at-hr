@@ -2,9 +2,9 @@
 module.exports = {
 
     'githubAuth' : {
-        'clientID': '733c4bdbab76cd5eac66',
-        'clientSecret': 'c2d4ba8833abed61ff204245a070c6bd568b584f',
-        'callbackURL': 'http://localhost:8080/auth/github/callback'
+        'clientID': '0731c08188113341a48f',
+        'clientSecret': '7c95bb4e767aad0fcb24c7ecf9dc25d9926335dd',
+        'callbackURL': 'http://hungryathr.azurewebsites.net/auth/github/callback'
     }
 };
 
