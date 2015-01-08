@@ -22,6 +22,6 @@
     "passport-github": "^0.1.5"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   }
 }

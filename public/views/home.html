@@ -1,28 +1,39 @@
 <header class="home">
-  <span style="display: inline-block">
-  <i class="weather-icon left rain icon" ng-show="showHeaderIcons"></i>
-  </span>
-
-  <select dir="rtl" ng-model="searchItem" ng-options="objective for objective in searchItems" ng-keypress="startSearch($event, searchItem)" autofocus></select>
+  <div class="weather-icon">
+    <i class="left rain icon"></i>
+  </div>
+  <select dir="rtl"
+    ng-model="searchItem"
+    ng-options="objective for objective in searchItems"
+    ng-keypress="startSearch($event, searchItem)"
+    autofocus>
+  </select>
   <span>@ Hack Reactor</span>
 
-  <span style="display: inline-block">
-  <i class="login-icon right sign in icon" ng-click="showModal()" ng-show="showHeaderIcons"></i>
-  </span>
+  <div class="login-icon" ng-click="showModal()">
+    Sign in
+    <i class="right sign in icon"></i>
+  </div>
 
   <modal ng-model="show_modal">
     <i class="close icon" ng-click="closeModal()"></i>
-    <div class="header"><i class="github icon"></i>Sign in with GitHub</div>
+    <div class="header">
+      <i class="github icon"></i>
+      Sign in with GitHub
+    </div>
     <div class="actions">
       <div class="two fluid ui buttons">
+
         <div class="ui negative labeled icon button" ng-click="closeModal()">
           <i class="remove icon"></i>
             No
         </div>
+
         <a type="button" ng-href="/auth/github" class="ui positive right labeled icon button">
           Yes
           <i class="checkmark icon"></i>
         </a>
+
       </div>
     </div>
   </modal>

@@ -112,19 +112,27 @@ header {
   vertical-align: middle;
 }
 
+
 .home-header {
   height: 80vh;
   line-height: 80vh;
 }
 
+.weather-icon, .login-icon {
+  position: absolute;
+  font-size: 26px;
+  font-family: 'Bebas Light';
+  line-height: 30px;
+  top: 10px;
+}
+
 .weather-icon {
-  font-size: 32px;
-  margin-right: 40px;
+  left: 5px;
 }
 
 .login-icon {
-  font-size: 32px;
-  margin-left: 40px;
+  cursor: pointer;
+  right: 5px;
 }
 
 modal {
