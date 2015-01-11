@@ -3,6 +3,7 @@ angular.module('hungry.home', [])
 .controller('HomeController', function($scope, $state, $http, $stateParams) {
   $scope.searchItems = ['hungry', 'thirsty', 'studious'];
   $scope.showHeaderIcons = true;
+  $scope.business_list;
 
   var init = function($scope) {
     // sets up css for home screen
@@ -15,14 +16,14 @@ angular.module('hungry.home', [])
     //checks if user is logged in
     loggedIn();
 
+    // persists the filter value
+    $scope.searchItem = setFilterValue($scope.searchItems, $stateParams);
+
     // gets business data
     getData();
 
     // initally don't show modal
     $scope.show_modal = false;
-
-    // persists the filter value
-    $scope.searchItem = setFilterValue($scope.searchItems, $stateParams);
   };
 
 
@@ -37,20 +38,62 @@ angular.module('hungry.home', [])
     return businessArray;
   };
 
+  var setBusinessList = function(filterNum) {
+    switch (filterNum) {
+      case '0':
+        console.log('case 0');
+        $scope.business_list = $scope.placesToEat;
+        break;
+      case '1':
+        console.log('case 1');
+        $scope.business_list = $scope.placesToDrink;
+        break;
+      case '2':
+        console.log('case 2');
+        $scope.business_list = $scope.placesToStudy;
+        break;
+    }
+  };
+
   // makes http request to get array of businesses
   var getData = function() {
     $http.get('/business').
       success(function(data, status, headers, config) {
-        $scope.data = data;
         $scope.placesToEat = filterBusinesses(data, '0');
-        console.log('places to eat: ', $scope.placesToEat);
         $scope.placesToDrink = filterBusinesses(data, '1');
-        console.log('places to drink: ', $scope.placesToDrink);
         $scope.placesToStudy = filterBusinesses(data, '2');
+        $scope.business_list = setBusinessList($stateParams.filterNum);
+        $scope.markers = getMarkers($scope.business_list);
       }).
       error(function(data, status, headers, config) {
         console.error('error getting business data');
       });
+  };
+
+  // creates and returns array of business coordinates
+  var getMarkers = function(data) {
+    var markersArray = [];
+
+    var hackReactor = {
+      id: 0,
+      latitude: 37.783748,
+      longitude: -122.409046,
+      google_id: 'mothership',
+      title: 'Hack Reactor'
+    };
+
+    markersArray.push(hackReactor);
+
+    for (var i = 0; i < data.length; i++) {
+      markersArray.push({
+        id: i + 1,
+        latitude: data[i].coordinates.latitude,
+        longitude: data[i].coordinates.longitude,
+        google_id: data[i].google_id,
+        title: data[i].business_name
+      });
+    }
+    return markersArray;
   };
 
   var loggedIn = function() {

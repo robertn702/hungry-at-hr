@@ -1,7 +1,7 @@
 angular.module('hungry.search', [])
 
 .controller('SearchController', function($scope, $state, $http, $stateParams) {
-  $scope.business_list
+  $scope.markerControl = {};
 
   var init = function() {
     $scope.map = {
@@ -9,51 +9,9 @@ angular.module('hungry.search', [])
       zoom: 14
     };
 
-    $scope.markerControl = {};
-
-    switch ($stateParams.filterNum) {
-      case '0':
-        console.log('case 0');
-        $scope.business_list = $scope.placesToEat;
-        break;
-      case '1':
-        console.log('case 1');
-        $scope.business_list = $scope.placesToDrink;
-        break;
-      case '2':
-        console.log('case 2');
-        $scope.business_list = $scope.placesToStudy;
-        break;
-    }
-
-    $scope.markers = getMarkers($scope.business_list);
   };
 
-  // creates and returns array of business coordinates
-  var getMarkers = function(data) {
-    var markersArray = [];
 
-    var hackReactor = {
-      id: 0,
-      latitude: 37.783748,
-      longitude: -122.409046,
-      google_id: 'mothership',
-      title: 'Hack Reactor'
-    };
-
-    markersArray.push(hackReactor);
-
-    for (var i = 0; i < data.length; i++) {
-      markersArray.push({
-        id: i + 1,
-        latitude: data[i].coordinates.latitude,
-        longitude: data[i].coordinates.longitude,
-        google_id: data[i].google_id,
-        title: data[i].business_name
-      });
-    }
-    return markersArray;
-  };
 
   // REFERENCE
   // $scope.map.markers.push({

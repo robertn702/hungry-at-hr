@@ -12,7 +12,7 @@ var app = angular.module('hungry', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('home');
+  $urlRouterProvider.otherwise('/home/0/search/');
 
   $stateProvider
     .state('home', {
