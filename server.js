@@ -1,4 +1,3 @@
-// modules =================================================
 var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
@@ -8,10 +7,7 @@ var passport       = require('passport');
 var session        = require('express-session');
 var cookieParser   = require('cookie-parser');
 
-// configuration ===========================================
-
-// config files
-var db = require(__dirname + '/config/db');
+require('dotenv').load();
 
 // set our port
 var port = process.env.PORT || 8080;
@@ -29,7 +25,7 @@ app.use(passport.session());
 
 // connect to our mongoDB database
 // (uncomment after you enter in your own credentials in config/db.js)
-mongoose.connect(db.url);
+mongoose.connect(process.env.DATABASE_URL);
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json

@@ -1,15 +1,8 @@
-// read this http://blog.revathskumar.com/2014/06/express-github-authentication-with-passport.html
-
-// config/passport.js
+require('dotenv').load();
 
 // load all the things we need
 var GitHubStrategy = require('passport-github').Strategy;
-
-// load up the user model
 var User = require('../app/models/user');
-
-// load the auth variables
-var configAuth = require('./auth');
 
 module.exports = function(passport) {
 
@@ -26,14 +19,10 @@ module.exports = function(passport) {
         });
     });
 
-    // =========================================================================
-    // GITHUB ==================================================================
-    // =========================================================================
-
     passport.use(new GitHubStrategy({
-        clientID: configAuth.githubAuth.clientID,
-        clientSecret: configAuth.githubAuth.clientSecret,
-        callbackURL: configAuth.githubAuth.callbackURL
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL
     },
     function(accessToken, refreshToken, profile, done) {
         process.nextTick(function() {

@@ -1,6 +1,5 @@
 # Configuration data
-config/auth.js
-config/db.js
+.env
 
 # Dependency directories
 # Deployed apps should consider commenting these lines out:
