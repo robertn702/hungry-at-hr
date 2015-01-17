@@ -5,11 +5,13 @@
       Back to Map
     </button>
     <div class="ui large icon input">
-      <input type="text" ng-autocomplete
-        ng-model="business"
+      <input
+        ng-autocomplete
         options="inputOptions"
         details="details"
-        placeholder="Add a place to {{searchItem}}...">
+        ng-model="business"
+        type="text"
+        placeholder="Add a place to {{searchItem}}..."/>
       <i class="search icon" ng-click="getData(details)"></i>
     </div>
     <div ng-show="business_data.google_id">

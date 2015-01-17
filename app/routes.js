@@ -34,6 +34,7 @@ module.exports = function(app, passport) {
             throw err;
           } else {
             console.log('added new business');
+            res.json(business);
             res.status(201);
           }
         });

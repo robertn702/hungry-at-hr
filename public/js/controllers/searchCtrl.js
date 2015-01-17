@@ -9,7 +9,7 @@ angular.module('hungry.search', [])
   // default map setting (Hack Reactor in center)
   $scope.map = {
     center: { latitude: 37.783748, longitude: -122.409046 },
-    zoom: 14
+    zoom: 15
   };
 
 

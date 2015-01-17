@@ -4,8 +4,14 @@ angular.module('hungry.add-business', [])
   angular.extend($scope, Businesses);
   $scope.business_data = {};
   $scope.address = [];
+  // $scope.inputOptions = {
+  //   types: 'restaurant|cafe|bar',
+  //   country: 'us',
+  //   watchEnter: true
+  // };
+
   $scope.inputOptions = {
-    types: 'restaurant|cafe|bar',
+    types: 'geocode',
     country: 'us',
     watchEnter: true
   };
@@ -15,16 +21,13 @@ angular.module('hungry.add-business', [])
     zoom: 16
   };
 
-  var init = function() {
-  };
-
-  init();
-
-  $scope.backToMap = function() {
+  $scope.backToMaps = function() {
     $state.go('home.search', { filterNum: $stateParams.filterNum });
   };
 
-  $scope.getData = function(details) {
+  // when the user
+  $scope.getData = function(details, keyEvent) {
+    console.log('keyEvent: ', keyEvent);
     $scope.map = {
       center: {
         latitude: details.geometry.location.k,
@@ -49,7 +52,6 @@ angular.module('hungry.add-business', [])
   var isDuplicate = function(googleId) {
     $http.get('/business/' + googleId).
       success(function(data, status, headers, config) {
-        console.log('got business: ', data);
         if (data) {
           $scope.disable = true;
         } else {
@@ -64,15 +66,12 @@ angular.module('hungry.add-business', [])
   $scope.submitData = function() {
     $http.post('/business', $scope.business_data).
       success(function(data, status, headers, config) {
-        console.log('added business: ', status);
+        console.log('added business');
         $state.go('home.business', { google_id: data.google_id, filterNum: $stateParams.filterNum });
       }).
-      then(function() {
-        console.log('hello');
-      })
-      // error(function(data, status, headers, config) {
-      //   console.log('error adding business', status);
-      // });
+      error(function(data, status, headers, config) {
+        console.log('error adding business', status);
+      });
   };
 
   var formatAddress = function(addressComps) {
