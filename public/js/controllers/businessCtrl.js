@@ -1,47 +1,37 @@
 angular.module('hungry.business', [])
 
-.controller('BusinessController', function($scope, $http, $state, $stateParams) {
-  var init = function() {
-    // gets the business object that matches the google_id
-    $scope.business_data = getBusiness($stateParams.google_id);
+.controller('BusinessController', function($scope, $http, $state, $stateParams, Businesses) {
+  angular.extend($scope, Businesses);
 
-    // automatically shows the /reviews view when the business page loads
-    if ($state.is('home.business')) {
-      $state.go('home.business.reviews');
-    }
+  // automatically shows the /reviews view when the business page loads
+  if ($state.is('home.business')) {
+    $state.go('home.business.reviews');
+  }
+
+  // map data for the minimap on the business page
+  $scope.map = {
+    // default center is set at Hack Reactor until get request returns
+    center: { latitude: 37.783748, longitude: -122.409046 },
+    zoom: 16
   };
+
+  // creates the marker for the minimap on the business page
+  $scope.marker = [{id: 0}];
 
   // searches through the array of businesses and returns the busines object
-  var getBusiness = function(id) {
-    for (var i = 0; i < $scope.data.length; i++) {
-      if ($scope.data[i].google_id === id) {
-        return $scope.data[i];
-      }
-    }
-  };
-
-  init();
+  $http.get('/business/' + $stateParams.google_id).
+  success(function(data, status, headers, config) {
+    $scope.business_data = data;
+    $scope.marker[0].latitude = $scope.map.center.latitude = data.coordinates.latitude;
+    $scope.marker[0].longitude = $scope.map.center.longitude = data.coordinates.longitude;
+  }).
+  error(function(data, status, headers, config) {
+    console.error('error getting business');
+  });
 
   $scope.backToMap = function() {
     $state.go('home.search', { filterNum: $stateParams.filterNum });
   };
 
-  var business_latitude = $scope.business_data.coordinates.latitude;
-  var business_longitude = $scope.business_data.coordinates.longitude;
 
-  // creates the marker for the minimap on the business page
-  $scope.marker = [{
-    id: 0,
-    latitude: business_latitude,
-    longitude: business_longitude
-  }];
-
-  // mapd data for the minimap on the business page
-  $scope.map = {
-    center: {
-      latitude: business_latitude,
-      longitude: business_longitude
-    },
-    zoom: 16
-  };
 });

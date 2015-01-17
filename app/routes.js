@@ -42,6 +42,17 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.get('/business/:google_id', function(req, res) {
+    Business.findOne({google_id: req.params.google_id}, function(err, business) {
+      if (err) {
+        throw (err);
+      } else {
+        res.json(business);
+        res.status(200);
+      }
+    });
+  });
+
   app.post('/review', function(req, res) {
     // add review
     console.log('check if authenticated: ', req.isAuthenticated());
