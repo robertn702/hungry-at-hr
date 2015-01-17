@@ -112,16 +112,9 @@ header {
   vertical-align: middle;
 }
 
-
-.home-header {
-  height: 80vh;
-  line-height: 80vh;
-}
-
 .weather-icon, .login-icon {
   position: absolute;
   font-size: 26px;
-  font-family: 'Bebas Light' Arial;
   line-height: 30px;
   top: 10px;
 }
@@ -144,7 +137,7 @@ modal {
 }
 
 select {
-  font-family: 'Bebas Light';
+  font-family: 'Bebas Light', Arial;
   background-color:rgba(0, 0, 0, 0);
   text-decoration: underline;
   border: none;
