@@ -139,6 +139,12 @@ header {
   right: 5px;
 }
 
+.login-icon a {
+  font-family: 'Bebas', Arial;
+  font-weight: lighter;
+  color: white;
+}
+
 modal {
   display: inline-block;
 }

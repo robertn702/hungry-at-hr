@@ -10,15 +10,17 @@
   </select>
   <span>@ Hack Reactor</span>
 
-  <div class="login-icon" ng-click="showModal()">
+  <div class="login-icon" ng-show="!isLoggedIn" ng-click="showModal()">
     Sign in
     <i class="right sign in icon"></i>
   </div>
 
-<!--   <div class="login-icon" ng-click="">
-    Logout
-    <i class="right sign out icon"></i>
-  </div> -->
+  <div class="login-icon" ng-show="isLoggedIn">
+    <a ng-href="/logout">
+      Sign Out
+      <i class="right sign out icon"></i>
+    </a>
+  </div>
 
   <modal ng-model="show_modal">
     <i class="close icon" ng-click="closeModal()"></i>
