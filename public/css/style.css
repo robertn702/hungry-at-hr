@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'Bebas';
-  src: url('BebasNeueBold.otf') format("opentype"),
-      url('BebasNeueBold.ttf') format("truetype"),
-      url('BebasNeueBold.woff') format("woff");
+  src: url('fonts/BebasNeueBold.otf') format("opentype"),
+      url('fonts/BebasNeueBold.ttf') format("truetype"),
+      url('fonts/BebasNeueBold.woff') format("woff");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Bebas';
-  src: url('BebasNeueLight.otf') format("opentype"),
-    url('BebasNeueLight.ttf') format("truetype"),
-    url('BebasNeueLight.woff') format("woff");
+  src: url('fonts/BebasNeueLight.otf') format("opentype"),
+    url('fonts/BebasNeueLight.ttf') format("truetype"),
+    url('fonts/BebasNeueLight.woff') format("woff");
   font-weight: lighter;
   font-style: normal;
 }
