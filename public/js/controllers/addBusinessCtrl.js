@@ -1,6 +1,7 @@
 angular.module('hungry.add-business', [])
 
-.controller('AddBusinessController', function($scope, $http, $state, $stateParams) {
+.controller('AddBusinessController', function($scope, $http, $state, $stateParams, Businesses) {
+  angular.extend($scope, Businesses);
   $scope.business_data = {};
   $scope.address = [];
   $scope.inputOptions = {
@@ -41,26 +42,37 @@ angular.module('hungry.add-business', [])
     $scope.address = formatAddress(details.address_components);
     $scope.hours = formatHours(details.opening_hours.periods);
     $scope.business_data = formatData(details);
-    $scope.disable = isDuplicate(details.place_id);
+    isDuplicate(details.place_id);
   };
 
   // checks if business is a duplicate
   var isDuplicate = function(googleId) {
-    for (var i = 0; i < $scope.businesses.list.length; i++) {
-      if ($scope.data[i].google_id === googleId) return true;
-    }
-    return false;
+    $http.get('/business/' + googleId).
+      success(function(data, status, headers, config) {
+        console.log('got business: ', data);
+        if (data) {
+          $scope.disable = true;
+        } else {
+          $scope.disable = false;
+        }
+      }).
+      error(function(data, status, headers, config) {
+        console.error('error getting business data');
+      });
   };
 
   $scope.submitData = function() {
     $http.post('/business', $scope.business_data).
       success(function(data, status, headers, config) {
-        console.log('added business', data);
+        console.log('added business: ', status);
         $state.go('home.business', { google_id: data.google_id, filterNum: $stateParams.filterNum });
       }).
-      error(function(data, status, headers, config) {
-        console.log('error adding business', status);
-      });
+      then(function() {
+        console.log('hello');
+      })
+      // error(function(data, status, headers, config) {
+      //   console.log('error adding business', status);
+      // });
   };
 
   var formatAddress = function(addressComps) {

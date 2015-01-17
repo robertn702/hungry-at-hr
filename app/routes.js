@@ -33,6 +33,7 @@ module.exports = function(app, passport) {
           if (err) {
             throw err;
           } else {
+            console.log('added new business');
             res.status(201);
           }
         });
