@@ -14,10 +14,9 @@ module.exports = function(app, passport) {
     Business.findOne({google_id: req.body.google_id}, function(err, business) {
       if (err) {
         console.log('error creating business');
-        done(err);
       } else if (business) {
         console.log('business already exists');
-        done(null);
+        res.status(200);
       } else {
         new Business({
           google_id: req.body.google_id,
