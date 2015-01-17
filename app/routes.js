@@ -11,22 +11,32 @@ module.exports = function(app, passport) {
   });
 
   app.post('/business', function(req, res) {
-    new Business({
-      google_id: req.body.google_id,
-      filter: req.body.filter,        // Eat, Drink, Study
-      address: req.body.address,      // array of 2 strings
-      hours: req.body.hours,
-      coordinates: req.body.coordinates,
-      rating: req.body.rating,
-      price: req.body.price,
-      website: req.body.website,
-      business_name: req.body.business_name,
-      phone: req.body.phone
-    }).save(function(err, business) {
+    Business.findOne({google_id: req.body.google_id}, function(err, business) {
       if (err) {
-        throw err;
+        console.log('error creating business');
+        done(err);
+      } else if (business) {
+        console.log('business already exists');
+        done(null);
       } else {
-        res.status(201);
+        new Business({
+          google_id: req.body.google_id,
+          filter: req.body.filter,        // Eat, Drink, Study
+          address: req.body.address,      // array of 2 strings
+          hours: req.body.hours,
+          coordinates: req.body.coordinates,
+          rating: req.body.rating,
+          price: req.body.price,
+          website: req.body.website,
+          business_name: req.body.business_name,
+          phone: req.body.phone
+        }).save(function(err, business) {
+          if (err) {
+            throw err;
+          } else {
+            res.status(201);
+          }
+        });
       }
     });
   });

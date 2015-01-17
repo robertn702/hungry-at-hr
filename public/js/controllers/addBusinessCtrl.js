@@ -9,7 +9,6 @@ angular.module('hungry.add-business', [])
     watchEnter: true
   };
 
-  // TODO: do I need this here?
   $scope.map = {
     center: { latitude: 37.783748, longitude: -122.409046 },
     zoom: 16
@@ -47,7 +46,7 @@ angular.module('hungry.add-business', [])
 
   // checks if business is a duplicate
   var isDuplicate = function(googleId) {
-    for (var i = 0; i < $scope.data.length; i++) {
+    for (var i = 0; i < $scope.businesses.list.length; i++) {
       if ($scope.data[i].google_id === googleId) return true;
     }
     return false;
