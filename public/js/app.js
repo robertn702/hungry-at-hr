@@ -1,4 +1,5 @@
 var app = angular.module('hungry', [
+  'hungry.services',
   'hungry.home',
   'hungry.business',
   'hungry.add-business',
