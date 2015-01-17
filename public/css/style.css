@@ -2,6 +2,7 @@
   font-family: 'Bebas';
   src: url('BebasNeueBold.otf') format("opentype");
   src: url('BebasNeueBold.ttf') format("truetype");
+  src: url('BebasNeueBold.woff') format("woff");
   font-weight: bold;
   font-style: normal;
 }
@@ -10,6 +11,7 @@
   font-family: 'Bebas';
   src: url('BebasNeueLight.otf') format("opentype");
   src: url('BebasNeueLight.ttf') format("truetype");
+  src: url('BebasNeueLight.woff') format("woff");
   font-weight: lighter;
   font-style: normal;
 }
