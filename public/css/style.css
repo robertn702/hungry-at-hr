@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Bebas';
-  src: url('./bebas/BebasNeueBold.otf') format("opentype");
+  src: url('BebasNeueBold.otf') format("opentype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Bebas';
-  src: url('./bebas/BebasNeueLight.otf') format("opentype");
+  src: url('BebasNeueLight.otf') format("opentype");
   font-weight: lighter;
   font-style: normal;
 }
@@ -16,13 +16,13 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   font-weight: normal;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Calibri, Helvetica, sans-serif;
 }
 
 p, th, td, li, dd, dt, ul, ol, blockquote, q, acronym, abbr, a, input, select, textarea, img {
   margin: 0;
   padding: 0;
-  font: normal normal normal 1em/1.25 Arial, Helvetica, sans-serif;
+  font: normal normal normal 1em/1.25 Calibri, Helvetica, sans-serif;
 }
 
 /***** ALL *****/
@@ -110,7 +110,7 @@ header {
   line-height: 80px;
 
   font-size: 65px;
-  font-family: 'Bebas', Arial;
+  font-family: 'Bebas', Calibri;
   font-weight: bold;
 
   text-align: center;
@@ -119,7 +119,7 @@ header {
 
 .weather-icon, .login-icon {
   position: absolute;
-  font-family: 'Bebas', Arial;
+  font-family: 'Bebas', Calibri;
   font-weight: lighter;
   font-size: 26px;
   line-height: 30px;
@@ -144,7 +144,7 @@ modal {
 }
 
 select {
-  font-family: 'Bebas', Arial;
+  font-family: 'Bebas', Calibri;
   font-weight: lighter;
   background-color:rgba(0, 0, 0, 0);
   text-decoration: underline;
