@@ -67,7 +67,7 @@ angular.module('hungry.services', [])
   };
 
   return {
-    getBusinesses: getBusinesses,
-    businesses: businesses
+    getBusinesses:getBusinesses,
+    businesses:businesses
   };
 })

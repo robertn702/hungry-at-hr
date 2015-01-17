@@ -4,18 +4,14 @@ angular.module('hungry.search', [])
   angular.extend($scope, Businesses);
   $scope.markerControl = {};
 
-  var init = function() {
-    // default map setting (Hack Reactor in center)
-    $scope.map = {
-      center: { latitude: 37.783748, longitude: -122.409046 },
-      zoom: 14
-    };
-
-    // gets business data (takes in filter num)
-    getBusinesses($stateParams.filterNum);
+  // default map setting (Hack Reactor in center)
+  $scope.map = {
+    center: { latitude: 37.783748, longitude: -122.409046 },
+    zoom: 14
   };
 
-  init();
+  // gets business data (takes in filter num)
+  $scope.getBusinesses($stateParams.filterNum);
 
   // list of marker events
   $scope.markerEvents = {
@@ -29,7 +25,6 @@ angular.module('hungry.search', [])
       $state.go('home.business', { google_id: marker.model.google_id, filterNum: $stateParams.filterNum });
     }
   };
-
   //
   $scope.businessListEventHandler = function(listEvent) {
     var id = listEvent.target.id.slice(5); // removes 'list_' from id to get the google_id
@@ -37,9 +32,8 @@ angular.module('hungry.search', [])
 
     var allButSelectedIsNotHidden = function(isVisible) {
       for (var i = 0; i < markers.length; i++) {
-        if (markers[i].model.google_id !== id && markers[i].model.google_id !== 'mothership') {
+        if (markers[i].model.google_id !== id && markers[i].model.google_id !== 'mothership')
           markers[i].setVisible(isVisible);
-        }
       }
     };
 
@@ -54,5 +48,4 @@ angular.module('hungry.search', [])
 
     var map = angular.element(document.querySelector('.angular-google-map'));
   };
-
 });
