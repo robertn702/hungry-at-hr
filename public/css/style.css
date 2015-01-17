@@ -1,11 +1,15 @@
 @font-face {
-  font-family: 'Bebas Bold';
-  src: url('bebas/BebasNeueBold.otf') format("opentype");
+  font-family: 'Bebas';
+  src: url('./bebas/BebasNeueBold.otf') format("opentype");
+  font-weight: lighter;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Bebas Light';
-  src: url('bebas/BebasNeueLight.otf') format("opentype");
+  font-family: 'Bebas';
+  src: url('./bebas/BebasNeueLight.otf') format("opentype");
+  font-weight: bold;
+  font-style: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -106,7 +110,8 @@ header {
   line-height: 80px;
 
   font-size: 65px;
-  font-family: 'Bebas Bold', Arial;
+  font-family: 'Bebas', Arial;
+  font-weight: bold;
 
   text-align: center;
   vertical-align: middle;
@@ -137,7 +142,8 @@ modal {
 }
 
 select {
-  font-family: 'Bebas Light', Arial;
+  font-family: 'Bebas', Arial;
+  font-weight: lighter;
   background-color:rgba(0, 0, 0, 0);
   text-decoration: underline;
   border: none;
