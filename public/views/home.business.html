@@ -7,23 +7,6 @@
 
     <div>
       <h1>{{business_data.business_name}}</h1>
-      <div>
-        <span class="business-info-icon">
-          <i class="marker icon"></i>
-        </span>
-        <span class="business-info">
-          <h3>{{business_data.address[0]}}</h3>
-          <h3>{{business_data.address[1]}}</h3>
-        </span>
-      </div>
-      <div>
-        <span class="business-info-icon">
-          <i class="call icon"></i>
-        </span>
-        <span class="business-info">
-          <h3>{{business_data.phone}}</h3>
-        </span>
-      </div>
     </div>
     <!-- TODO move this somewhere else and display stars / dollar signs -->
     <div>Rating: {{(business_data.rating / business_data.review_count).toFixed(1)}}</div>
@@ -38,6 +21,25 @@
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
       <ui-gmap-markers models="marker" coords="'self'" icon="'icon'"></ui-gmap-markers>
     </ui-gmap-google-map>
+    <div class="business-info-wrapper">
+      <div>
+        <span class="business-info-icon">
+          <i class="marker icon"></i>
+        </span>
+        <span class="business-info">
+          <h4>{{business_data.address[0]}}</h4>
+          <h4>{{business_data.address[1]}}</h4>
+        </span>
+      </div>
+      <div>
+        <span class="business-info-icon">
+          <i class="call icon"></i>
+        </span>
+        <span class="business-info">
+          <h4>{{business_data.phone}}</h4>
+        </span>
+      </div>
+    </div>
   </aside>
 
 </div>

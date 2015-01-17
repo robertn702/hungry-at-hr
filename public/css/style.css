@@ -233,6 +233,10 @@ aside .angular-google-map-container {
   float: left;
 }
 
+.business-info-wrapper {
+  margin: 10px 0 10px 0;
+}
+
 .business-info {
   display: inline-block;
 }
