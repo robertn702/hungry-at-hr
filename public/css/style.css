@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Bebas Bold';
-  src: url('bebas/BebasNeueBold.otf');
+  src: url('bebas/BebasNeueBold.otf') format("opentype");
 }
 
 @font-face {
   font-family: 'Bebas Light';
-  src: url('bebas/BebasNeueLight.otf');
+  src: url('bebas/BebasNeueLight.otf') format("opentype");
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -106,7 +106,7 @@ header {
   line-height: 80px;
 
   font-size: 65px;
-  font-family: 'Bebas Bold';
+  font-family: 'Bebas Bold', Arial;
 
   text-align: center;
   vertical-align: middle;
@@ -121,7 +121,7 @@ header {
 .weather-icon, .login-icon {
   position: absolute;
   font-size: 26px;
-  font-family: 'Bebas Light';
+  font-family: 'Bebas Light' Arial;
   line-height: 30px;
   top: 10px;
 }
