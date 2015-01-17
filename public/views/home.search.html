@@ -4,7 +4,7 @@
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
       <ui-gmap-markers
         id="markers"
-        models="markers"
+        models="markers.array"
         coords="'self'"
         icon="'icon'"
         events="markerEvents"
@@ -23,7 +23,7 @@
 
     <div class="business-list">
       <div
-        ng-repeat="business in business_list"
+        ng-repeat="business in businesses.list"
         class="business-list-item"
         id="list_{{business.google_id}}"
         ng-mouseover="businessListEventHandler($event)"

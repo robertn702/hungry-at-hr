@@ -2,6 +2,8 @@ angular.module('hungry.search', [])
 
 .controller('SearchController', function($scope, $state, $http, $stateParams, Businesses) {
   angular.extend($scope, Businesses);
+  // gets business data (takes in filter num)
+  $scope.getBusinesses($stateParams.filterNum);
   $scope.markerControl = {};
 
   // default map setting (Hack Reactor in center)
@@ -10,8 +12,6 @@ angular.module('hungry.search', [])
     zoom: 14
   };
 
-  // gets business data (takes in filter num)
-  $scope.getBusinesses($stateParams.filterNum);
 
   // list of marker events
   $scope.markerEvents = {
@@ -25,9 +25,11 @@ angular.module('hungry.search', [])
       $state.go('home.business', { google_id: marker.model.google_id, filterNum: $stateParams.filterNum });
     }
   };
+
   //
   $scope.businessListEventHandler = function(listEvent) {
-    var id = listEvent.target.id.slice(5); // removes 'list_' from id to get the google_id
+    // removes 'list_' from id to get the google_id
+    var id = listEvent.target.id.slice(5);
     var markers = $scope.markerControl.getGMarkers();
 
     var allButSelectedIsNotHidden = function(isVisible) {

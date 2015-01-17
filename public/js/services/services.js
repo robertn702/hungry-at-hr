@@ -2,15 +2,13 @@ angular.module('hungry.services', [])
 
 .factory('Businesses', function ($http) {
   var businesses = {};
+  var markers = {};
 
   var getBusinesses = function (filterNum) {
     $http.get('/business').
       success(function(data, status, headers, config) {
-        businesses.eat = filterBusinesses(data, '0');
-        businesses.drink = filterBusinesses(data, '1');
-        businesses.study = filterBusinesses(data, '2');
-        businesses.list = setBusinessList(businesses, filterNum);
-        businesses.markers = getMarkers(businesses.list);
+        businesses.list = filterBusinesses(data, filterNum);
+        markers.array = getMarkers(businesses.list);
       }).
       error(function(data, status, headers, config) {
         console.error('error getting business data');
@@ -24,21 +22,6 @@ angular.module('hungry.services', [])
         businessArray.push(data[i]);
     }
     return businessArray;
-  };
-
-  // changes business list depending on the filter
-  var setBusinessList = function(businesses, filterNum) {
-    switch (filterNum) {
-      case '0':
-        return businesses.Eat;
-        break;
-      case '1':
-        return businesses.Drink;
-        break;
-      case '2':
-        return businesses.Study;
-        break;
-    }
   };
 
   // creates and returns array of business coordinates
@@ -67,7 +50,8 @@ angular.module('hungry.services', [])
   };
 
   return {
-    getBusinesses:getBusinesses,
-    businesses:businesses
+    getBusinesses: getBusinesses,
+    businesses: businesses,
+    markers: markers
   };
 })
