@@ -11,18 +11,20 @@
         details="details"
         ng-model="business"
         type="text"
-        placeholder="Add a place to {{searchItem}}..."/>
+        placeholder="Add a place to {{searchItem}}..."
+        ng-keypress="isDuplicate(details.place_id, $event)"
+        />
       <i class="search icon" ng-click="getData(details)"></i>
     </div>
-    <div ng-show="business_data.google_id">
-      <h1>{{business_data.business_name}}</h1>
+    <div ng-show="details.place_id">
+      <h1>{{details.name}}</h1>
       <div>
         <span class="business-info-icon">
           <i class="marker icon"></i>
         </span>
         <span class="business-info">
-          <h3>{{business_data.address[0]}}</h3>
-          <h3>{{business_data.address[1]}}</h3>
+          <h3>{{details.formatted_address.split(',')[0]}}</h3>
+          <h3>{{details.formatted_address.split(',')[1] + ',' + details.formatted_address.split(',')[2]}}</h3>
         </span>
       </div>
       <div>
@@ -30,15 +32,15 @@
           <i class="call icon"></i>
         </span>
         <span class="business-info">
-          <h3>{{business_data.phone}}</h3>
+          <h3>{{details.formatted_phone_number}}</h3>
         </span>
       </div>
     </div>
     <div class="ui divider"></div>
 
-    <button ng-click="submitData()" ng-class="{disabled: disable}" class="ui labeled icon button" ng-show="business_data.google_id">
+    <button ng-click="submitData(details)" ng-class="{disabled: disable}" class="ui labeled icon button" ng-show="details.place_id">
       <i class="plus icon"></i>
-      Add {{business_data.business_name}}
+      Add {{details.name}}
     </button>
   </section>
 

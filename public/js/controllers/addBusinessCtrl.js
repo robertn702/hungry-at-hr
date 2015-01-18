@@ -4,6 +4,17 @@ angular.module('hungry.add-business', [])
   angular.extend($scope, Businesses);
   $scope.business_data = {};
   $scope.address = [];
+  $scope.details = {
+    geometry: {
+      location: {
+        k: 37.783748,
+        D: -122.409046
+      }
+    }
+  };
+
+
+
   // $scope.inputOptions = {
   //   types: 'restaurant|cafe|bar',
   //   country: 'us',
@@ -17,39 +28,19 @@ angular.module('hungry.add-business', [])
   };
 
   $scope.map = {
-    center: { latitude: 37.783748, longitude: -122.409046 },
+    center: {
+      latitude: $scope.details.geometry.location.k,
+      longitude: $scope.details.geometry.location.D
+    },
     zoom: 16
   };
 
-  $scope.backToMaps = function() {
+  $scope.backToMap = function() {
     $state.go('home.search', { filterNum: $stateParams.filterNum });
   };
 
-  // when the user
-  $scope.getData = function(details, keyEvent) {
-    console.log('keyEvent: ', keyEvent);
-    $scope.map = {
-      center: {
-        latitude: details.geometry.location.k,
-        longitude: details.geometry.location.D
-      },
-      zoom: 16
-    };
-
-    $scope.marker = [{
-      id: 0,
-      latitude: details.geometry.location.k,
-      longitude: details.geometry.location.D
-    }];
-
-    $scope.address = formatAddress(details.address_components);
-    $scope.hours = formatHours(details.opening_hours.periods);
-    $scope.business_data = formatData(details);
-    isDuplicate(details.place_id);
-  };
-
   // checks if business is a duplicate
-  var isDuplicate = function(googleId) {
+  $scope.isDuplicate = function(googleId, keyEvent) {
     $http.get('/business/' + googleId).
       success(function(data, status, headers, config) {
         if (data) {
@@ -63,7 +54,10 @@ angular.module('hungry.add-business', [])
       });
   };
 
-  $scope.submitData = function() {
+
+  $scope.submitData = function(details) {
+    $scope.business_data = formatData(details);
+
     $http.post('/business', $scope.business_data).
       success(function(data, status, headers, config) {
         console.log('added business');
@@ -74,15 +68,12 @@ angular.module('hungry.add-business', [])
       });
   };
 
-  var formatAddress = function(addressComps) {
+  var formatAddress = function(address) {
+    console.log('formatted address: ', address);
+    var splitAddress = address.split(',');
     var address = [];
-    if (addressComps.length === 6) {
-      address[0] = addressComps[0].long_name + ' ' + addressComps[1].long_name;
-      address[1] = addressComps[2].long_name + ', ' + addressComps[3].short_name + ' ' + addressComps[5].long_name;
-    } else if (addressComps.length === 7) {
-      address[0] = addressComps[1].long_name + ' ' + addressComps[2].long_name + ' ' + addressComps[0].long_name;
-      address[1] = addressComps[3].long_name + ', ' + addressComps[4].short_name + ' ' + addressComps[6].long_name;
-    }
+    address[0] = splitAddress[0];
+    address[1] = splitAddress[1] + ',' + splitAddress[2];
     return address;
   };
 
@@ -125,8 +116,8 @@ angular.module('hungry.add-business', [])
     return {
       google_id: details.place_id,
       filter: [$stateParams.filterNum],  // Eat, Drink, Study
-      address: $scope.address,      // array of 2 strings
-      hours: $scope.hours,
+      address: formatAddress(details.formatted_address),      // array of 2 strings
+      hours: formatHours(details.opening_hours.periods),
       coordinates: {
           latitude: details.geometry.location.k,
           longitude: details.geometry.location.D
